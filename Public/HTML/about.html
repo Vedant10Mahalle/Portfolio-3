@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Vedant Mahalle</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Public/CSSS/about.css">
+
+     <!-- FontAwesome for Icons -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Vedant Mahalle</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-user"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="project.html"><i class="fas fa-code"></i> Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="project3D.html"><i class="fas fa-3Dcode"></i> 3D Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resume.html"><i class="fas fa-file-alt"></i> Resume</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section id="about" class="about-section">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <img src="/Public/Assest/images/pp.jpeg" alt="Vedant Mahalle" class="profile-img">
+            <div class="about-text">
+                <h3>Vedant Mahalle</h3>
+                <p>
+                    I am Vedant Mahalle, a Robotics and AI engineer with expertise in full-stack web development. Currently pursuing B.Tech in Robotics and AI at NMAMIT, I specialize in web technologies, automation, and AI integration. As a CSI committee member and web developer, I have contributed to projects like quiz platforms, virtual pet applications, and medicine tracking systems.  I am dedicated to building efficient and intelligent solutions.
+                </p>
+                <p>
+                    Apart from tech, I love exploring new innovations, creating interactive web experiences,  
+                    and working on real-world AI solutions**. 🚀  
+                </p>
+                <!-- <a href="resume.html" class="btn">Download Resume</a> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+        
+        <section id="education" class="education-section">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                <div class="education-content">
+                    
+                    <!-- College -->
+                    <div class="education-box">
+                        <h3>NMAM Institute of Technology</h3>
+                        <p><strong>Degree:</strong> B.Tech in Robotics & AI</p>
+                        <p><strong>Year:</strong> 2023 - Present</p>
+                        <p><strong>Highlights:</strong> Robotics & Artificial Intelligence</p>
+                    </div>
+        
+                    <!-- Higher Secondary -->
+                    <div class="education-box">
+                        <h3>Dr. Chandrabhanu Sonavanr Jr. College</h3>
+                        <p><strong>Program:</strong> Higher Secondary Education (PCM)</p>
+                        <p><strong>Year:</strong> 2020 - 2022</p>
+                        <p><strong>Achievements:</strong> Focused on Mathematics, Physics</p>
+                    </div>
+        
+                    <!-- School -->
+                    <div class="education-box">
+                        <h3>Kripa Sadan Convent School</h3>
+                        <p><strong>Class:</strong> Schooling (10th)</p>
+                        <p><strong>Year:</strong>2009 - 2020</p>
+                        <p><strong>Performance:</strong> Excellent Academic Record</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        
+      
+        
+
+        <!-- Achievements & Certifications Section -->
+<section id="achievements" class="achievements">
+    <h2>Internships & Certifications</h2>
+    <div class="certificates">
+        <div class="cert">
+            <img src="/Public/Assest/images/cert8.jpeg" alt="IoT 3D VR Internship">
+            <p>IoT 3D VR Internship</p>
+            <button class="view-details" onclick="openModal('cert1')">View Details</button>
+        </div>
+        <div class="cert">
+            <img src="/Public/Assest/images/cert6.jpg" alt="Front End Development">
+            <p>CodeAlpha Internship</p>
+            <button class="view-details" onclick="openModal('cert2')">View Details</button>
+        </div>
+        <div class="cert">
+            <img src="/Public/Assest/images/cert2.jpg" alt="PCB Design">
+            <p>PCB Design</p>
+            <button class="view-details" onclick="openModal('cert3')">View Details</button>
+        </div>
+        <div class="cert">
+            <img src="/Public/Assest/images/cert3.jpg" alt="Fusion 360">
+            <p>Fusion 360</p>
+            <button class="view-details" onclick="openModal('cert4')">View Details</button>
+        </div>
+        <div class="cert">
+            <img src="/Public/Assest/images/cert7.jpeg" alt="PES Banglore Hackathon">
+            <p>PES Banglore Hackathon</p>
+            <button class="view-details" onclick="openModal('cert5')">View Details</button>
+        </div>
+        <div class="cert">
+            <img src="/Public/Assest/images/cert1.jpg" alt="Design4Dev Hackathon">
+            <p>Design4Dev Hackathon</p>
+            <button class="view-details" onclick="openModal('cert6')">View Details</button>
+        </div>
+        <div class="cert">
+            <img src="/Public/Assest/images/cert9.jpg" alt="Tata Imagination Challenge">
+            <p>Tata Imagination Challenge</p>
+            <button class="view-details" onclick="openModal('cert7')">View Details</button>
+        </div>
+        <div class="cert">
+            <img src="/Public/Assest/images/cert9.jpeg" alt="AeroClub Workshop">
+            <p>AeroClub Workshop</p>
+            <button class="view-details" onclick="openModal('cert8')">View Details</button>
+        </div>
+        
+</section>
+
+<!-- IoT 3D VR Internship -->
+<div id="cert1" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('cert1')">&times;</span>
+        <h2>IoT 3D VR Internship</h2>
+        <img src="/Public/Assest/images/cert8.jpeg" alt="Certificate">
+        <p>The IoT, 3D, and VR Internship organized by Atal Incubation Centre, Nitte, provided hands-on training in IoT, 3D modeling, and Virtual Reality. It covered sensor integration, microcontrollers, cloud applications, CAD design, 3D printing, and VR development using tools like Unity and Unreal Engine.</p>
+        <div class="modal-buttons">
+            <a href="/Public/Assest/images/cert8.jpeg" target="_blank" class="cert-link">View Certificate</a>
+        </div>
+    </div>
+</div>
+
+<!-- CodeAlpha Internship -->
+<div id="cert2" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('cert2')">&times;</span>
+        <h2>CodeAlpha Internship</h2>
+        <img src="/Public/Assest/images/cert6.jpg" alt="Certificate">
+        <p>The Front-End Development Internship by Code Alpha focused on web development fundamentals, including HTML, CSS, JavaScript, and frameworks like Bootstrap.</p>
+        <div class="modal-buttons">
+            <a href="/Public/Assest/images/cert6.jpg" target="_blank" class="cert-link">View Certificate</a>
+            <a href="https://github.com/Vedant10Mahalle?tab=repositories" target="_blank" class="project-link">Open Website</a>
+        </div>
+    </div>
+</div>
+
+<!-- PCB Design -->
+<div id="cert3" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('cert3')">&times;</span>
+        <h2>PCB Design</h2>
+        <img src="/Public/Assest/images/cert2.jpg" alt="Certificate">
+        <p>The PCB Design Workshop organized by the Robotics Club, Nitte, focused on circuit design, schematic creation, and PCB layout using tools like KiCad or Eagle.</p>
+        <div class="modal-buttons">
+            <a href="/Public/Assest/images/cert2.jpg" target="_blank" class="cert-link">View Certificate</a>
+        </div>
+    </div>
+</div>
+
+<!-- Fusion 360 -->
+<div id="cert4" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('cert4')">&times;</span>
+        <h2>Fusion 360</h2>
+        <img src="/Public/Assest/images/cert3.jpg" alt="Certificate">
+        <p>The Fusion 360 Workshop provided training in 3D modeling, CAD design, and simulation using Autodesk Fusion 360.</p>
+        <div class="modal-buttons">
+            <a href="/Public/Assest/images/cert3.jpg" target="_blank" class="cert-link">View Certificate</a>
+        </div>
+    </div>
+</div>
+
+<!-- PES Bangalore Hackathon -->
+<div id="cert5" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('cert5')">&times;</span>
+        <h2>PES Bangalore Hackathon</h2>
+        <img src="/Public/Assest/images/cert7.jpeg" alt="Certificate">
+        <p>The PES Bangalore Hackathon was a tech competition at PES University, focusing on AI, IoT, blockchain, and web development.</p>
+        <div class="modal-buttons">
+            <a href="/Public/Assest/images/cert7.jpeg" target="_blank" class="cert-link">View Certificate</a>
+            <a href="https://learn-mate-tau.vercel.app/" target="_blank" class="project-link">Open Website</a>
+        </div>
+    </div>
+</div>
+
+<!-- Design4Dev Hackathon -->
+<div id="cert6" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('cert6')">&times;</span>
+        <h2>Design4Dev Hackathon</h2>
+        <img src="/Public/Assest/images/cert2.jpg" alt="Certificate">
+        <p>The Design4Dev Hackathon, organized by RISE (Robotics and AI Branch Association), was a design and development-focused event aimed at fostering UI/UX innovation.</p>
+        <div class="modal-buttons">
+            <a href="/Public/Assest/images/cert2.jpg" target="_blank" class="cert-link">View Certificate</a>
+            <a href="https://learn-mate-tau.vercel.app/" target="_blank" class="project-link">Open Website</a>
+        </div>
+    </div>
+</div>
+
+<!-- Tata Imagination Challenge -->
+<div id="cert7" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('cert7')">&times;</span>
+        <h2>Tata Imagination Challenge</h2>
+        <img src="/Public/Assest/images/cert9.jpg" alt="Certificate">
+        <p>The Tata Imaging Challenge was a competition focused on computer vision, AI, and image processing. Participants tackled real-world challenges related to medical imaging, object detection, facial recognition, and deep learning-based analysis. The event encouraged innovation in image enhancement, segmentation, and automation using AI-driven techniques.</p>
+        <div class="modal-buttons">
+            <a href="/Public/Assest/images/cert9.jpg" target="_blank" class="cert-link">View Certificate</a>
+            <a href="https://unstop.com/certificate-preview/10540e6d-28b9-4919-9df5-0dad0a266e32?utm_campaign=site-emails" target="_blank" class="project-link">Open Website</a>
+        </div>
+    </div>
+</div>
+<!-- AeroClub Workshop -->
+<div id="cert8" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('cert8')">&times;</span>
+        <h2>AeroClub Workshop</h2>
+        <img src="/Public/Assest/images/cert9.jpeg" alt="Certificate">
+        <p>The AeroClub Workshop was a hands-on session focused on aerospace, drone technology, and aerodynamics. Participants learned about drone assembly, flight dynamics, UAV programming, and real-world applications in robotics and AI. The workshop provided practical exposure to building and operating aerial vehicles, enhancing technical skills in autonomous systems and aviation technology</p>
+        <div class="modal-buttons">
+            <a href="/Public/Assest/images/cert9.jpeg" target="_blank" class="cert-link">View Certificate</a>
+            <!-- <a href="https://unstop.com/certificate-preview/10540e6d-28b9-4919-9df5-0dad0a266e32?utm_campaign=site-emails" target="_blank" class="project-link">Open Website</a> -->
+        </div>
+    </div>
+</div>
+
+
+        
+ <!-- Experience Section -->
+<section id="experience" class="container my-5">
+    <h2 class="text-center">Experience</h2>
+
+    <div class="row">
+        <!-- Experience 1 -->
+        <div class="col-md-6" data-aos="fade-up">
+            <div class="card experience-card">
+                <div class="card-body">
+                    <h5 class="card-title">Web Developer - CSI Student Branch</h5>
+                    <p class="text-muted">Aug 2024 - Present</p>
+                    <p>Developed and maintained web platforms for CSI events, improving UI/UX and functionality.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="col-md-6" data-aos="fade-up">
+            <div class="card experience-card">
+                <div class="card-body">
+                    <h5 class="card-title">Intern - Code Alpha</h5>
+                    <p class="text-muted">Sep 2024 - Oct 2024</p>
+                    <p>Worked on full-stack projects, integrating APIs and optimizing database performance.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience 3 -->
+        <div class="col-md-6" data-aos="fade-up">
+            <div class="card experience-card">
+                <div class="card-body">
+                    <h5 class="card-title">Robotics & AI Member - Rise Robotics</h5>
+                    <p class="text-muted">Aug 2024 - Present</p>
+                    <p>Contributed to AI-driven robotic projects and research in autonomous systems.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience 4 -->
+        <div class="col-md-6" data-aos="fade-up">
+            <div class="card experience-card">
+                <div class="card-body">
+                    <h5 class="card-title">Developer - Atal Incubation Centre</h5>
+                    <p class="text-muted">2024</p>
+                    <p>Built innovative projects in VR, IoT, and AI, enhancing tech accessibility.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="skills" class="skills-section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Skills & Soft Skills</h2>
+
+        <div class="skills-container">
+            
+            <!-- Technical Skills -->
+            <div class="skills-box" data-aos="fade-right">
+                <h3>Technical Skills</h3>
+                <ul>
+                    <li><i class="fas fa-code"></i> Web Development (HTML, CSS, JS)</li>
+                    <li><i class="fas fa-cogs"></i> DSA - C</li>
+                    <li><i class="fab fa-java"></i> Java</li>
+                    <li><i class="fas fa-database"></i> Fusion 360</li>
+                    <li><i class="fab fa-node-js"></i> KiCad</li>
+                </ul>
+            </div>
+
+            <!-- Soft Skills -->
+            <div class="skills-box" data-aos="fade-left">
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li><i class="fas fa-users"></i> Leadership</li>
+                    <li><i class="fas fa-comments"></i> Communication</li>
+                    <li><i class="fas fa-lightbulb"></i> Problem-Solving</li>
+                    <li><i class="fas fa-clock"></i> Time Management</li>
+                    <li><i class="fas fa-brain"></i> Adaptability</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="languages" class="languages-section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Languages I Speak</h2>
+        <div class="language-list">
+
+            <!-- English -->
+            <div class="language-item" data-aos="fade-right">
+                <i class="fas fa-globe"></i>
+                <h3>English</h3>
+                <p>Fluent</p>
+            </div>
+
+            <!-- Hindi -->
+            <div class="language-item" data-aos="fade-up">
+                <i class="fas fa-language"></i>
+                <h3>Hindi</h3>
+                <p>Native</p>
+            </div>
+
+            <!-- Marathi -->
+            <div class="language-item" data-aos="fade-left">
+                <i class="fas fa-comments"></i>
+                <h3>Marathi</h3>
+                <p>Native</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    </div>
+</section>
+<!-- Hobby Section -->
+<section id="hobbies" class="hobby-section py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title text-center">My Hobbies & Interests</h2>
+        <div class="row mt-4">
+            
+            <!-- Hobby 1: Music -->
+            <div class="col-md-4">
+                <div class="card hobby-card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-music fa-3x hobby-icon"></i>
+                        <h5 class="card-title mt-3">Listening to Music</h5>
+                        <p class="card-text">Music helps me relax and stay focused. I enjoy a mix of genres from lo-fi to energetic beats.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hobby 2: Watching Series -->
+            <div class="col-md-4">
+                <div class="card hobby-card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-tv fa-3x hobby-icon"></i>
+                        <h5 class="card-title mt-3">Watching Series</h5>
+                        <p class="card-text">I love watching shows like <strong>Mirzapur</strong> and <strong>Kota Factory</strong>. They inspire and entertain me.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hobby 3: Robotics & AI -->
+            <div class="col-md-4">
+                <div class="card hobby-card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-robot fa-3x hobby-icon"></i>
+                        <h5 class="card-title mt-3">Exploring Robotics & AI</h5>
+                        <p class="card-text">I enjoy working on AI-driven projects, automation, and building cool robotic applications.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</section>    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Chart.js for Data Visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="/Public/SCRIPTS/about.js"></script>
+    <footer>
+        <p>© 2025 Vedant Mahalle | Made with ❤️</p>
+    </footer>
+</body>
+</html>

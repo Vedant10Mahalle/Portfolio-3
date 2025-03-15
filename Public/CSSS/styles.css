@@ -1,0 +1,94 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+/* Hero Section */
+header {
+    background: url('/Public/Assest/images/hero.jpg') center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    font-weight: bold;
+    color: #fff;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #ddd;
+}
+
+header .btn {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    margin: 10px;
+}
+
+/* About Section */
+section.container {
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 9px;
+    font-size: 3 rem;
+    background-color: #343a40;
+    color: white;
+    margin-top: auto; /* Push footer to the bottom but not too far */
+}
+
+/* Glitch Effect */
+@keyframes glitch {
+    0% { transform: translate(0); opacity: 1; }
+    20% { transform: translate(-2px, 2px); opacity: 0.8; }
+    40% { transform: translate(-2px, -2px); opacity: 1; }
+    60% { transform: translate(2px, 2px); opacity: 0.9; }
+    80% { transform: translate(2px, -2px); opacity: 1; }
+    100% { transform: translate(0); opacity: 0.8; }
+}
+
+.glitch-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    animation: glitch 0.3s infinite;
+    text-align: center;
+    width: 100%;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Robotics Projects</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Model Viewer (3D) -->
+    <script src="https://cdn.jsdelivr.net/npm/@google/model-viewer"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/Public/CSSS/project3D.css">
+
+     <!-- FontAwesome for Icons -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Vedant Mahalle</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-user"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="project.html"><i class="fas fa-code"></i> Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="project3D.html"><i class="fas fa-3Dcode"></i> 3D Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resume.html"><i class="fas fa-file-alt"></i> Resume</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Projects Button -->
+    <div class="text-center my-4">
+        <a href="project.html" class="btn btn-secondary">🔙 Back to Projects</a>
+    </div>
+
+    <!-- 3D Project Showcase -->
+    <section class="container my-5 text-center">
+        <h2 class="section-title">Explore My 3D Robotics Projects</h2>
+        <p>Interact with my robotics models in 3D.</p>
+
+        <div class="row" id="projects-container">
+            <!-- Example 3D Model -->
+            <div class="col-md-6">
+                <model-viewer 
+                    src="/models/sample-robot.glb" 
+                    alt="Project 1" 
+                    auto-rotate 
+                    camera-controls 
+                    id="model-1"
+                    class="project-model">
+                </model-viewer>
+            </div>
+
+            <div class="col-md-6">
+                <model-viewer 
+                    src="/models/sample-arm.glb" 
+                    alt="Project2" 
+                    auto-rotate 
+                    camera-controls 
+                    id="model-2"
+                    class="project-model">
+                </model-viewer>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center bg-dark text-light py-3">
+        <p>© 2025 Vedant Mahalle | Made with ❤️</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Project 3D JS -->
+    <script src="/Public/SCRIPTS/project3D.js"></script>
+    <script src="/Public/SCRIPTS/3dviewer.js"></script>
+
+    <!-- JavaScript for Pop-up Alert -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const models = document.querySelectorAll(".project-model");
+            models.forEach(model => {
+                model.addEventListener("click", function () {
+                    alert("Updating Soon");
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
