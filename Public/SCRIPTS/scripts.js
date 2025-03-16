@@ -20,17 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.toggle("bg-dark");
         document.body.classList.toggle("text-light");
 
-        // Change Button Icon
-        if (document.body.classList.contains("bg-dark")) {
-            themeToggle.innerHTML = "☀️";
-            themeToggle.classList.remove("btn-outline-light");
-            themeToggle.classList.add("btn-outline-dark");
-        } else {
-            themeToggle.innerHTML = "🌙";
-            themeToggle.classList.remove("btn-outline-dark");
-            themeToggle.classList.add("btn-outline-light");
-        }
-    });
+    //     // Change Button Icon
+    //     if (document.body.classList.contains("bg-dark")) {
+    //         themeToggle.innerHTML = "☀️";
+    //         themeToggle.classList.remove("btn-outline-light");
+    //         themeToggle.classList.add("btn-outline-dark");
+    //     } else {
+    //         themeToggle.innerHTML = "🌙";
+    //         themeToggle.classList.remove("btn-outline-dark");
+    //         themeToggle.classList.add("btn-outline-light");
+    //     }
+    // });
 
     // Custom Cursor Effect
     const cursor = document.createElement("div");

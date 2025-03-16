@@ -58,12 +58,39 @@ body {
     color: #007bff;
 }
 
+/* Hero Section */
+header {
+    background: url('/Public/Assest/images/hero.jpg') center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    font-weight: bold;
+    color: #fff;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #ddd;
+}
+
+header .btn {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    margin: 10px;
+}
 /* Footer */
 /* Footer */
 footer {
     text-align: center;
     padding: 15px 0;
-    background-color: #212529;
+    background-color: #060606;
     color: white;
     position: relative;
     bottom: 0;

@@ -56,6 +56,33 @@ body {
 .resume-image:hover {
     transform: scale(1.05);
 }
+/* Hero Section */
+header {
+    background: url('/Public/Assest/images/hero.jpg') center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    font-weight: bold;
+    color: #fff;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #ddd;
+}
+
+header .btn {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    margin: 10px;
+}
 
 /* Download Button */
 .download-btn {
@@ -115,14 +142,15 @@ body {
 /* Footer */
 footer {
     text-align: center;
-    padding: 30px 30px;
-    background-color: #212529;
+    padding: 30px;
+    background-color: #030303;
     color: white;
-    position: relative;
-    bottom: auto;
+    position: absolute;
+    bottom: 0;
     width: 100%;
     font-size: 1rem;
 }
+
 
 footer p {
     margin:  0;
