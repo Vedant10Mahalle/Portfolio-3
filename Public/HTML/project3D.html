@@ -1,103 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Robotics Projects</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3D Robotics Projects</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
 
-    <!-- Model Viewer (3D) -->
-    <script src="https://cdn.jsdelivr.net/npm/@google/model-viewer"></script>
+  <!-- Model Viewer (3D) -->
+  <script src="https://cdn.jsdelivr.net/npm/@google/model-viewer"></script>
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/Public/CSSS/project3D.css">
+  <!-- FontAwesome for Icons -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap"
+    rel="stylesheet"
+  />
 
-     <!-- FontAwesome for Icons -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Internal CSS integrated from your provided styles */
+
+    /* General Page Styling */
+     body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: #0ff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 70px; /* reserve space for bottom nav */
+    }
+
+    /* Sidebar - Bottom Nav */
+    nav.sidebar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 13rem;
+      box-shadow:
+        0 -1px 10px #0ff, 
+        0 -2px 20px #0ff;
+      z-index: 1000;
+      backdrop-filter: saturate(180%) blur(8px);
+      border-top: 1px solid #0ff;
+    }
+
+    nav.sidebar a.nav-icon {
+      color: #0ff;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      gap: 13rem;
+      transition: 
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+      text-decoration: none;
+      filter: drop-shadow(0 0 4px #0ff);
+      position: relative;
+    }
+
+    nav.sidebar a.nav-icon:hover,
+    nav.sidebar a.nav-icon.active {
+      color: #0ff;
+      box-shadow:
+        0 0 8px #0ff,
+        0 0 16px #0ff,
+        0 0 24px #00fff7,
+        0 0 30px #00fff7;
+      transform: scale(1.25) rotate(8deg);
+      animation: pulseGlow 2s infinite;
+      z-index: 10;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 6px #0ff);
+      }
+      50% {
+        filter: drop-shadow(0 0 16px #00fff7);
+      }
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      color: #0ff;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px #0ff;
+    }
+
+    /* Subtitle text */
+    section > p {
+      color: #00ffcc;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px #00ffcc;
+    }
+
+    /* 3D Model Styling */
+    #projects-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+
+    .project-card {
+      width: 45%;
+      max-width: 500px;
+      background: #111;
+      border-radius: 15px;
+      border: 2px solid #0ff;
+      box-shadow: 0 0 20px #0ff;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px #00ffcc;
+    }
+
+    .project-item {
+      padding: 1.5rem 1rem 2rem;
+      color: #0ff;
+    }
+
+    .project-item h5.card-title {
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px #0ff;
+    }
+
+    .project-item p.card-text {
+      color: #00ffcc;
+      font-size: 1rem;
+      text-shadow: 0 0 10px #00ffcc;
+      margin-top: 0.5rem;
+    }
+
+    model-viewer.model-viewer {
+      width: 100% !important;
+      height: 300px !important;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #0ff;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    model-viewer.model-viewer:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px #00ffcc;
+    }
+
+    /* Back Button */
+    .text-center.my-4 a.btn-secondary {
+      background-color: #0ff;
+      color: #111;
+      font-weight: 700;
+      padding: 10px 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px #0ff;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      text-decoration: none;
+    }
+
+    .text-center.my-4 a.btn-secondary:hover {
+      background-color: #00cc99;
+      color: #fff;
+      box-shadow: 0 0 30px #00cc99;
+    }
+
+    /* Footer */
+    footer.footer {
+      background-color: #050505;
+      padding: 15px 10px;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #0ff;
+      text-shadow: 0 0 15px #0ff;
+      font-family: "Orbitron", sans-serif;
+    }
+
+    /* Fade In Animation */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animated Title - glowing typing effect */
+    #animated-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      color: #00ffff;
+      text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
+      margin: 3rem 0 1rem 0;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 0.15em solid #00ffff;
+      width: 0; /* will be animated */
+      animation:
+        typing 3.5s steps(10, end) forwards,
+        blink-caret 0.75s step-end infinite;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 13ch } /* 'MY PROJECTS' length with spaces */
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #00ffff }
+    }
+     #glow-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #00f0ff;
+      box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s ease-out;
+    }
+
+    #redirect-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      color: #00f0ff;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    #redirect-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .redirect-message {
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+    }
+  </style>
 </head>
 <body>
+  <!-- Navbar -->
+ <nav class="sidebar">
+    <!-- <a href="#" class="nav-icon" title="Robot"><i class="fas fa-robot"></i></a> -->
+    <a href="/Public/HTML/index.html" class="nav-icon neon-glow" title="Home"><i class="fas fa-home"></i></a>
+    <a href="/Public/HTML/about.html" class="nav-icon neon-glow" title="About">
+  <i class="fas fa-user-astronaut"></i>
+   <a href="/Public/HTML/project.html" class="nav-icon neon-glow" title="Projects">
+  <i class="fas fa-project-diagram"></i>
+</a>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Vedant Mahalle</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-user"></i> About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="project.html"><i class="fas fa-code"></i> Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="project3D.html"><i class="fas fa-3Dcode"></i> 3D Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="resume.html"><i class="fas fa-file-alt"></i> Resume</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <a href="/Public/HTML/resume.html" class="nav-icon neon-glow" title="Resume"><i class="fas fa-file-alt"></i></a>
+    <a href="/Public/HTML/contact.html" class="nav-icon neon-glow" title="Contact"><i class="fas fa-envelope"></i></a>
+  </nav>
+ 
+    <div id="glow-cursor"></div>
+  <div id="redirect-overlay">
+    <div class="redirect-message">🚀 Redirecting you...</div>
+  </div>
 
-    <!-- Back to Projects Button -->
-    <div class="text-center my-4">
-        <a href="index.html" class="btn btn-secondary">🔙 Back to Projects</a>
+  <!-- Back to Projects Button -->
+  <div class="text-center my-4">
+    <a href="project.html" class="btn btn-secondary">🔙 Back to Projects</a>
+  </div>
+
+  <!-- 3D Project Showcase -->
+  <section class="container my-5 text-center">
+    <h2 class="section-title">Explore My 3D Robotics Projects</h2>
+    <p>Interact with my robotics models in 3D.</p>
+
+    <div class="row" id="projects-container">
+      <!-- Dynamically loaded projects will appear here -->
     </div>
+  </section>
 
-    <!-- 3D Project Showcase -->
-    <section class="container my-5 text-center">
-        <h2 class="section-title">Explore My 3D Robotics Projects</h2>
-        <p>Interact with my robotics models in 3D.</p>
+  <!-- *** Animated Glowing Title moved just above footer *** -->
+  <!-- <h2 id="animated-title"></h2> -->
 
-        <div class="row" id="projects-container">
-            <!-- Example 3D Model -->
-            <div class="col-md-6">
-                <model-viewer 
-                    src="/models/sample-robot.glb" 
-                    alt="Project 1" 
-                    auto-rotate 
-                    camera-controls 
-                    id="model-1"
-                    class="project-model">
-                </model-viewer>
-            </div>
+  <!-- Footer
+  <footer class="footer text-center bg-dark text-light py-3">
+    <p>© 2025 Vedant Mahalle | Made with ❤️</p>
+  </footer> -->
 
-            <div class="col-md-6">
-                <model-viewer 
-                    src="/models/sample-arm.glb" 
-                    alt="Project2" 
-                    auto-rotate 
-                    camera-controls 
-                    id="model-2"
-                    class="project-model">
-                </model-viewer>
-            </div>
-        </div>
-    </section>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Footer -->
-    <footer class="footer text-center bg-dark text-light py-3">
-        <p>© 2025 Vedant Mahalle | Made with ❤️</p>
-    </footer>
+  <script>
+    // Internal JS integrated from your provided code
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Show pop-up when the page loads
+      setTimeout(() => {
+        alert("🚀 Project 3D Page - Updating Soon!");
+      }, 500); // Small delay for better UX
 
-    <!-- Project 3D JS -->
-    <script src="/Public/SCRIPTS/project3D.js"></script>
-    <script src="/Public/SCRIPTS/3dviewer.js"></script>
+    //   const projects = [
+    //     {
+    //       id: "robotic-arm",
+    //       title: "Robotic Arm",
+    //       model: "assets/robotic_arm.glb",
+    //       description:
+    //         "A robotic arm powered by AI for precise object manipulation.",
+    //     },
+    //     {
+    //       id: "ai-car",
+    //       title: "AI Self-Driving Car",
+    //       model: "assets/ai_car.glb",
+    //       description: "An AI-powered autonomous car using sensors and deep learning.",
+    //     },
+    //     {
+    //       id: "vr-robot",
+    //       title: "VR Controlled Robot",
+    //       model: "assets/vr_robot.glb",
+    //       description: "A robot controlled using virtual reality for remote operations.",
+    //     },
+    //     {
+    //       id: "humanoid-robot",
+    //       title: "Humanoid Robot",
+    //       model: "assets/humanoid_robot.glb",
+    //       description: "An advanced humanoid robot with AI-driven interactions.",
+    //     },
+    //   ];
 
-    <!-- JavaScript for Pop-up Alert -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const models = document.querySelectorAll(".project-model");
-            models.forEach(model => {
-                model.addEventListener("click", function () {
-                    alert("Updating Soon");
-                });
-            });
+      const projectsContainer = document.getElementById("projects-container");
+
+      projects.forEach((project, index) => {
+        const projectCard = document.createElement("div");
+        projectCard.classList.add("col-md-6", "project-card");
+
+        // Animation delay for smooth appearance
+        projectCard.style.animation = `fadeIn 0.8s ease-in-out ${index * 0.3}s both`;
+
+        projectCard.innerHTML = `
+          <div class="card text-center p-3 project-item">
+            <h5 class="card-title">${project.title}</h5>
+            <model-viewer 
+              src="${project.model}" 
+              camera-controls 
+              auto-rotate 
+              ar 
+              class="model-viewer"
+              style="width: 100%; height: 300px;">
+            </model-viewer>
+            <p class="card-text">${project.description}</p>
+          </div>
+        `;
+
+        projectsContainer.appendChild(projectCard);
+      });
+
+      // Add hover animation effect
+      document.querySelectorAll(".model-viewer").forEach((model) => {
+        model.addEventListener("mouseenter", function () {
+          this.style.transform = "scale(1.05)";
+          this.style.transition = "transform 0.3s ease-in-out";
         });
-    </script>
 
+        model.addEventListener("mouseleave", function () {
+          this.style.transform = "scale(1)";
+        });
+
+        // Click Event - Show Pop-up with Project Title
+        model.addEventListener("click", function () {
+          alert(`"${this.closest(".card").querySelector(".card-title").innerText}" - Updating Soon`);
+        });
+      });
+    });
+
+    // Animated glowing typing text for #animated-title
+    const animatedTitle = "MY PROJECTS";
+    const titleElement = document.getElementById("animated-title");
+
+    // The CSS animation above will handle typing effect with width from 0 to full
+
+    // Just set the text content on DOM load
+    document.addEventListener("DOMContentLoaded", () => {
+      titleElement.textContent = animatedTitle;
+    });
+    const glowCursor = document.getElementById("glow-cursor");
+    document.addEventListener("mousemove", (e) => {
+      glowCursor.style.top = `${e.clientY}px`;
+      glowCursor.style.left = `${e.clientX}px`;
+    });
+    document.addEventListener("touchmove", (e) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        glowCursor.style.top = `${touch.clientY}px`;
+        glowCursor.style.left = `${touch.clientX}px`;
+      }
+    }, { passive: true });
+
+    const sidebarLinks = document.querySelectorAll(".sidebar a");
+    const overlay = document.getElementById("redirect-overlay");
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = link.getAttribute("href");
+        overlay.classList.add("active");
+        setTimeout(() => {
+          window.location.href = target;
+        }, 1200);
+      });
+    });
+  
+
+  </script>
 </body>
 </html>

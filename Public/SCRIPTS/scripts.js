@@ -10,11 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
         easing: 'ease-in-out',
     });
 
-    // Dark Mode Toggle
-    const themeToggle = document.createElement("button");
-    themeToggle.innerHTML = "🌙";
-    themeToggle.classList.add("btn", "btn-outline-light", "position-fixed", "bottom-0", "end-0", "m-3", "shadow");
-    document.body.appendChild(themeToggle);
+    // // Dark Mode Toggle
+    // const themeToggle = document.createElement("button");
+    // themeToggle.innerHTML = "🌙";
+    // themeToggle.classList.add("btn", "btn-outline-light", "position-fixed", "bottom-0", "end-0", "m-3", "shadow");
+    // document.body.appendChild(themeToggle);
 
     themeToggle.addEventListener("click", () => {
         document.body.classList.toggle("bg-dark");
@@ -59,4 +59,30 @@ for (let i = 0; i < 100; i++) {
     circle.setAttribute("r", Math.random() * 10);
     circle.setAttribute("fill", "rgba(0, 123, 255, 0.6)");
     svg.appendChild(circle);
+
+    const glowCursor = document.getElementById("glow-cursor");
+    document.addEventListener("mousemove", (e) => {
+      glowCursor.style.top = `${e.clientY}px`;
+      glowCursor.style.left = `${e.clientX}px`;
+    });
+    document.addEventListener("touchmove", (e) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        glowCursor.style.top = `${touch.clientY}px`;
+        glowCursor.style.left = `${touch.clientX}px`;
+      }
+    }, { passive: true });
+
+    const sidebarLinks = document.querySelectorAll(".sidebar a");
+    const overlay = document.getElementById("redirect-overlay");
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = link.getAttribute("href");
+        overlay.classList.add("active");
+        setTimeout(() => {
+          window.location.href = target;
+        }, 1200);
+      });
+    });
 }

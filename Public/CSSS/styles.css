@@ -1,102 +1,97 @@
-/* General Styles */
+/* Overall Page Layout */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 2S00vh;
-}
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
-/* Navbar Styles */
-nav {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #fff; /* Adjust background color */
-    padding: 10px 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #050505;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
-/* Navbar Links */
-nav a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    color: #333;
-    text-decoration: none;
-    padding: 10px 15px;
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80px;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 1.2rem;
+  z-index: 1000;
 }
 
-/* On Hover */
-nav a:hover {
-    color: #007BFF;
-    transition: 0.3s ease-in-out;
-}
-/* Hero Section */
-header {
-    background: url('/Public/Assest/images/hero.jpg') center/cover no-repeat;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
+/* Wrapper contains content + footer, aligned vertically */
+.wrapper {
+  margin-left: 80px; /* offset for sidebar */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: calc(100% - 80px);
 }
 
-header h1 {
-    font-weight: bold;
-    color: #fff;
+/* Main content takes available space */
+main {
+  flex: 1;
+  padding: 3rem;
 }
 
-header p {
-    font-size: 1.2rem;
-    color: #ddd;
-}
-
-header .btn {
-    padding: 12px 20px;
-    font-size: 1.1rem;
-    margin: 10px;
-}
-
-/* About Section */
-section.container {
-    background-color: #fff;
-    padding: 50px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Footer */
+/* Footer stays at the bottom */
 footer {
-    text-align: center;
-    padding: 9px;
-    font-size: 3 rem;
-    background-color: #343a40;
-    color: white;
-    margin-top: auto; /* Push footer to the bottom but not too far */
+  text-align: center;
+  padding: 8px;
+  font-size: 1.2rem;
+  background-color: #343a40;
+  color: #fff;
 }
+#glow-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #00f0ff;
+      box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s ease-out;
+    }
 
-/* Glitch Effect */
-@keyframes glitch {
-    0% { transform: translate(0); opacity: 1; }
-    20% { transform: translate(-2px, 2px); opacity: 0.8; }
-    40% { transform: translate(-2px, -2px); opacity: 1; }
-    60% { transform: translate(2px, 2px); opacity: 0.9; }
-    80% { transform: translate(2px, -2px); opacity: 1; }
-    100% { transform: translate(0); opacity: 0.8; }
-}
+    #redirect-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      color: #00f0ff;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-in-out;
+    }
 
-.glitch-text {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #fff;
-    position: relative;
-    display: inline-block;
-    text-transform: uppercase;
-    animation: glitch 0.3s infinite;
-    text-align: center;
-    width: 100%;
-}
+    #redirect-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .redirect-message {
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+    }
+    

@@ -1,429 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | Vedant Mahalle</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Vedant Mahalle</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/Public/CSSS/about.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-     <!-- FontAwesome for Icons -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: #0ff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 70px; /* reserve space for bottom nav */
+    }
+
+    /* Sidebar - Bottom Nav */
+    nav.sidebar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 13rem;
+      box-shadow:
+        0 -1px 10px #0ff, 
+        0 -2px 20px #0ff;
+      z-index: 1000;
+      backdrop-filter: saturate(180%) blur(8px);
+      border-top: 1px solid #0ff;
+    }
+
+    nav.sidebar a.nav-icon {
+      color: #0ff;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      gap: 13rem;
+      transition: 
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+      text-decoration: none;
+      filter: drop-shadow(0 0 4px #0ff);
+      position: relative;
+    }
+
+    nav.sidebar a.nav-icon:hover,
+    nav.sidebar a.nav-icon.active {
+      color: #0ff;
+      box-shadow:
+        0 0 8px #0ff,
+        0 0 16px #0ff,
+        0 0 24px #00fff7,
+        0 0 30px #00fff7;
+      transform: scale(1.25) rotate(8deg);
+      animation: pulseGlow 2s infinite;
+      z-index: 10;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 6px #0ff);
+      }
+      50% {
+        filter: drop-shadow(0 0 16px #00fff7);
+      }
+    }
+
+    .main {
+      flex-grow: 1;
+      padding: 2rem;
+      padding-bottom: 90px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #animated-title {
+      font-weight: bold;
+      font-size: 3.5rem;
+      color: #00f0ff;
+      letter-spacing: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #00f0ff;
+      width: 0;
+      animation: typing 3s steps(12) forwards, blink 0.7s step-end infinite;
+      margin: 0 auto 2rem;
+      max-width: fit-content;
+      text-align: center;
+      margin-top: -1rem;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 12ch; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .card-title {
+      color: #0ff;
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .card {
+      background-color: #111;
+      border: 1px solid #0ff;
+      border-radius: 15px;
+      color: #e0ffff;
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 2rem;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 15px #0ff;
+    }
+
+    .profile-img {
+      max-width: 150px;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .cert-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .cert-item {
+      flex: 0 0 220px;
+      background: #111;
+      border: 1px solid #0ff;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 0 10px #0ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cert-item img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .view-cert-btn {
+      margin-top: 10px;
+      background: #0ff;
+      color: #111;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .view-cert-btn:hover {
+      background: #0cc;
+    }
+
+    #glow-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #00f0ff;
+      box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s ease-out;
+    }
+
+    .robot-scroll-hand {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 70px;
+      animation: handMove 2s infinite ease-in-out;
+      z-index: 1001;
+    }
+
+    @keyframes handMove {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(10px) rotate(-5deg); }
+      100% { transform: translateY(0px); }
+    }
+
+    #redirect-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      color: #00f0ff;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    #redirect-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .redirect-message {
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+    }
+  </style>
 </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">Vedant Mahalle</a>
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-user"></i> About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="project.html"><i class="fas fa-code"></i> Projects</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link" href="project3D.html"><i class="fas fa-3Dcode"></i> 3D Projects</a></li> -->
-                    <li class="nav-item"><a class="nav-link" href="resume.html"><i class="fas fa-file-alt"></i> Resume</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+  <div id="glow-cursor"></div>
+  <!-- <img src="/Public/Assest/images/rr.png" class="robot-scroll-hand" /> -->
+
+  <main class="main-content">
+    <h2 id="animated-title">About Me</h2>
+
+    <nav class="sidebar">
+      <a href="../../index.html" class="nav-icon neon-glow" title="Home"><i class="fas fa-home"></i></a>
+      <a href="about.html" class="nav-icon neon-glow" title="About"><i class="fas fa-user-astronaut"></i></a>
+      <a href="/Public/HTML/project.html" class="nav-icon neon-glow" title="Projects"><i class="fas fa-project-diagram"></i></a>
+      <a href="resume.html" class="nav-icon neon-glow" title="Resume"><i class="fas fa-file-alt"></i></a>
+      <a href="contact.html" class="nav-icon neon-glow" title="Contact"><i class="fas fa-envelope"></i></a>
+    </nav>
+
+    <div class="main container">
+      <div class="card p-4 text-center" data-aos="fade-up">
+        <img src="../../assets/profile.jpg" alt="Profile Photo" class="profile-img mx-auto" />
+        <p>Hello! I'm Vedant Mahalle, a passionate robotics and AI enthusiast dedicated to creating impactful innovations. I love building intelligent systems and exploring new technologies in automation, machine learning, and embedded systems.</p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col" data-aos="fade-up" data-aos-delay="100">
+          <div class="card p-3">
+            <h5 class="card-title">Education</h5>
+            <ul>
+              <li><strong>Bachelor of Engineering:</strong> XYZ University (2021 - 2025)</li>
+              <li><strong>HSC:</strong> ABC Junior College, 2021</li>
+              <li><strong>SSC:</strong> DEF High School, 2019</li>
             </ul>
+          </div>
         </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="200">
+          <div class="card p-3">
+            <h5 class="card-title">Technical Skills</h5>
+            <ul>
+              <li>Python, C++, JavaScript</li>
+              <li>TensorFlow, ROS, Flask</li>
+              <li>Git, Arduino, Raspberry Pi, Jetson Nano</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-4" data-aos="fade-up" data-aos-delay="300">
+        <h5 class="card-title">Internship</h5>
+        <p><strong>Embedded Systems Intern</strong> - RoboTech Pvt Ltd (Jun 2023 - Sep 2023)</p>
+        <ul>
+          <li>Worked on automation for robotic arms using Raspberry Pi and OpenCV.</li>
+          <li>Developed custom firmware for Arduino-based smart devices.</li>
+          <li>Contributed to AI integration in IoT platforms.</li>
+        </ul>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col" data-aos="fade-up" data-aos-delay="400">
+          <div class="card p-3">
+            <h5 class="card-title">Co-Curricular Activities</h5>
+            <ul>
+              <li>Captain - Robotics Club, XYZ University</li>
+              <li>Winner - State Level Hackathon 2023</li>
+              <li>Organizer - National Tech Symposium 2024</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col" data-aos="fade-up" data-aos-delay="500">
+          <div class="card p-3">
+            <h5 class="card-title">Languages I Speak</h5>
+            <ul>
+              <li>English (Fluent)</li>
+              <li>Hindi (Fluent)</li>
+              <li>Marathi (Native)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-4" data-aos="fade-up" data-aos-delay="600">
+        <h5 class="card-title">Certificates</h5>
+        <div class="cert-grid">
+          <div class="cert-item" data-aos="zoom-in" data-aos-delay="700">
+            <img src="certificate1.jpg" alt="Certificate 1" />
+            <button class="view-cert-btn" onclick="window.open('certificate1.jpg')">View Certificate</button>
+          </div>
+          <div class="cert-item" data-aos="zoom-in" data-aos-delay="800">
+            <img src="certificate2.jpg" alt="Certificate 2" />
+            <button class="view-cert-btn" onclick="window.open('certificate2.jpg')">View Certificate</button>
+          </div>
+          <div class="cert-item" data-aos="zoom-in" data-aos-delay="900">
+            <img src="certificate3.jpg" alt="Certificate 3" />
+            <button class="view-cert-btn" onclick="window.open('certificate3.jpg')">View Certificate</button>
+          </div>
+          <div class="cert-item" data-aos="zoom-in" data-aos-delay="1000">
+            <img src="certificate4.jpg" alt="Certificate 4" />
+            <button class="view-cert-btn" onclick="window.open('certificate4.jpg')">View Certificate</button>
+          </div>
+        </div>
+      </div>
     </div>
-</nav>
-<section id="about" class="about-section">
-    <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <img src="/Public/Assest/images/pp.jpeg" alt="Vedant Mahalle" class="profile-img">
-            <div class="about-text">
-                <h3>Vedant Mahalle</h3>
-                <p>
-                    I am Vedant Mahalle, a Robotics and AI engineer with expertise in full-stack web development. Currently pursuing B.Tech in Robotics and AI at NMAMIT, I specialize in web technologies, automation, and AI integration. As a CSI committee member and web developer, I have contributed to projects like quiz platforms, virtual pet applications, and medicine tracking systems.  I am dedicated to building efficient and intelligent solutions.
-                </p>
-                <p>
-                    Apart from tech, I love exploring new innovations, creating interactive web experiences,  
-                    and working on real-world AI solutions**. 🚀  
-                </p>
-                <!-- <a href="resume.html" class="btn">Download Resume</a> -->
-            </div>
-        </div>
-    </div>
-</section>
+  </main>
 
-        
-        <section id="education" class="education-section">
-            <div class="container">
-                <h2 class="section-title">Education</h2>
-                <div class="education-content">
-                    
-                    <!-- College -->
-                    <div class="education-box">
-                        <h3>NMAM Institute of Technology</h3>
-                        <p><strong>Degree:</strong> B.Tech in Robotics & AI</p>
-                        <p><strong>Year:</strong> 2023 - Present</p>
-                        <p><strong>Highlights:</strong> Robotics & Artificial Intelligence</p>
-                    </div>
-        
-                    <!-- Higher Secondary -->
-                    <div class="education-box">
-                        <h3>Dr. Chandrabhanu Sonavanr Jr. College</h3>
-                        <p><strong>Program:</strong> Higher Secondary Education (PCM)</p>
-                        <p><strong>Year:</strong> 2020 - 2022</p>
-                        <p><strong>Achievements:</strong> Focused on Mathematics, Physics</p>
-                    </div>
-        
-                    <!-- School -->
-                    <div class="education-box">
-                        <h3>Kripa Sadan Convent School</h3>
-                        <p><strong>Class:</strong> Schooling (10th)</p>
-                        <p><strong>Year:</strong>2009 - 2020</p>
-                        <p><strong>Performance:</strong> Excellent Academic Record</p>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
-        
-      
-        
+  <div id="redirect-overlay">
+    <div class="redirect-message">🚀 Redirecting you...</div>
+  </div>
 
-        <!-- Achievements & Certifications Section -->
-<section id="achievements" class="achievements">
-    <h2>Internships & Certifications</h2>
-    <div class="certificates">
-        <div class="cert">
-            <img src="/Public/Assest/images/cert8.jpeg" alt="IoT 3D VR Internship">
-            <p>IoT 3D VR Internship</p>
-            <button class="view-details" onclick="openModal('cert1')">View Details</button>
-        </div>
-        <div class="cert">
-            <img src="/Public/Assest/images/cert6.jpg" alt="Front End Development">
-            <p>CodeAlpha Internship</p>
-            <button class="view-details" onclick="openModal('cert2')">View Details</button>
-        </div>
-        <div class="cert">
-            <img src="/Public/Assest/images/cert2.jpg" alt="PCB Design">
-            <p>PCB Design</p>
-            <button class="view-details" onclick="openModal('cert3')">View Details</button>
-        </div>
-        <div class="cert">
-            <img src="/Public/Assest/images/cert3.jpg" alt="Fusion 360">
-            <p>Fusion 360</p>
-            <button class="view-details" onclick="openModal('cert4')">View Details</button>
-        </div>
-        <div class="cert">
-            <img src="/Public/Assest/images/cert7.jpeg" alt="PES Banglore Hackathon">
-            <p>PES Banglore Hackathon</p>
-            <button class="view-details" onclick="openModal('cert5')">View Details</button>
-        </div>
-        <div class="cert">
-            <img src="/Public/Assest/images/cert1.jpg" alt="Design4Dev Hackathon">
-            <p>Design4Dev Hackathon</p>
-            <button class="view-details" onclick="openModal('cert6')">View Details</button>
-        </div>
-        <div class="cert">
-            <img src="/Public/Assest/images/cert9.jpg" alt="Tata Imagination Challenge">
-            <p>Tata Imagination Challenge</p>
-            <button class="view-details" onclick="openModal('cert7')">View Details</button>
-        </div>
-        <div class="cert">
-            <img src="/Public/Assest/images/cert9.jpeg" alt="AeroClub Workshop">
-            <p>AeroClub Workshop</p>
-            <button class="view-details" onclick="openModal('cert8')">View Details</button>
-        </div>
-        
-</section>
+  <!-- LordIcon -->
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-<!-- IoT 3D VR Internship -->
-<div id="cert1" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('cert1')">&times;</span>
-        <h2>IoT 3D VR Internship</h2>
-        <img src="/Public/Assest/images/cert8.jpeg" alt="Certificate">
-        <p>The IoT, 3D, and VR Internship organized by Atal Incubation Centre, Nitte, provided hands-on training in IoT, 3D modeling, and Virtual Reality. It covered sensor integration, microcontrollers, cloud applications, CAD design, 3D printing, and VR development using tools like Unity and Unreal Engine.</p>
-        <div class="modal-buttons">
-            <a href="/Public/Assest/images/cert8.jpeg" target="_blank" class="cert-link">View Certificate</a>
-        </div>
-    </div>
-</div>
+  <script>
+    AOS.init({ duration: 1000, easing: "ease-in-out", once: true });
 
-<!-- CodeAlpha Internship -->
-<div id="cert2" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('cert2')">&times;</span>
-        <h2>CodeAlpha Internship</h2>
-        <img src="/Public/Assest/images/cert6.jpg" alt="Certificate">
-        <p>The Front-End Development Internship by Code Alpha focused on web development fundamentals, including HTML, CSS, JavaScript, and frameworks like Bootstrap.</p>
-        <div class="modal-buttons">
-            <a href="/Public/Assest/images/cert6.jpg" target="_blank" class="cert-link">View Certificate</a>
-            <a href="https://github.com/Vedant10Mahalle?tab=repositories" target="_blank" class="project-link">Open Website</a>
-        </div>
-    </div>
-</div>
+    const glowCursor = document.getElementById("glow-cursor");
+    document.addEventListener("mousemove", (e) => {
+      glowCursor.style.top = `${e.clientY}px`;
+      glowCursor.style.left = `${e.clientX}px`;
+    });
 
-<!-- PCB Design -->
-<div id="cert3" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('cert3')">&times;</span>
-        <h2>PCB Design</h2>
-        <img src="/Public/Assest/images/cert2.jpg" alt="Certificate">
-        <p>The PCB Design Workshop organized by the Robotics Club, Nitte, focused on circuit design, schematic creation, and PCB layout using tools like KiCad or Eagle.</p>
-        <div class="modal-buttons">
-            <a href="/Public/Assest/images/cert2.jpg" target="_blank" class="cert-link">View Certificate</a>
-        </div>
-    </div>
-</div>
+    document.addEventListener("touchmove", (e) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        glowCursor.style.top = `${touch.clientY}px`;
+        glowCursor.style.left = `${touch.clientX}px`;
+      }
+    }, { passive: true });
 
-<!-- Fusion 360 -->
-<div id="cert4" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('cert4')">&times;</span>
-        <h2>Fusion 360</h2>
-        <img src="Public/Assest/images/cert3.jpg" alt="Certificate">
-        <p>The Fusion 360 Workshop provided training in 3D modeling, CAD design, and simulation using Autodesk Fusion 360.</p>
-        <div class="modal-buttons">
-            <a href="/Public/Assest/images/cert3.jpg" target="_blank" class="cert-link">View Certificate</a>
-        </div>
-    </div>
-</div>
+    const sidebarLinks = document.querySelectorAll(".sidebar a");
+    const overlay = document.getElementById("redirect-overlay");
 
-<!-- PES Bangalore Hackathon -->
-<div id="cert5" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('cert5')">&times;</span>
-        <h2>PES Bangalore Hackathon</h2>
-        <img src="/Public/Assest/images/cert7.jpeg" alt="Certificate">
-        <p>The PES Bangalore Hackathon was a tech competition at PES University, focusing on AI, IoT, blockchain, and web development.</p>
-        <div class="modal-buttons">
-            <a href="/Public/Assest/images/cert7.jpeg" target="_blank" class="cert-link">View Certificate</a>
-            <a href="https://learn-mate-tau.vercel.app/" target="_blank" class="project-link">Open Website</a>
-        </div>
-    </div>
-</div>
-
-<!-- Design4Dev Hackathon -->
-<div id="cert6" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('cert6')">&times;</span>
-        <h2>Design4Dev Hackathon</h2>
-        <img src="/Public/Assest/images/cert2.jpg" alt="Certificate">
-        <p>The Design4Dev Hackathon, organized by RISE (Robotics and AI Branch Association), was a design and development-focused event aimed at fostering UI/UX innovation.</p>
-        <div class="modal-buttons">
-            <a href="/Public/Assest/images/cert2.jpg" target="_blank" class="cert-link">View Certificate</a>
-            <a href="https://learn-mate-tau.vercel.app/" target="_blank" class="project-link">Open Website</a>
-            <a href="https://github.com/Vedant10Mahalle/LearnMate" target="_blank" class="project-link" class="social-icon"><i class="fab fa-github>Open GitHub</a>
-        </div>
-    </div>
-</div>
-
-<!-- Tata Imagination Challenge -->
-<div id="cert7" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('cert7')">&times;</span>
-        <h2>Tata Imagination Challenge</h2>
-        <img src="/Public/Assest/images/cert9.jpg" alt="Certificate">
-        <p>The Tata Imaging Challenge was a competition focused on computer vision, AI, and image processing. Participants tackled real-world challenges related to medical imaging, object detection, facial recognition, and deep learning-based analysis. The event encouraged innovation in image enhancement, segmentation, and automation using AI-driven techniques.</p>
-        <div class="modal-buttons">
-            <a href="/Public/Assest/images/cert9.jpg" target="_blank" class="cert-link">View Certificate</a>
-            <a href="https://unstop.com/certificate-preview/10540e6d-28b9-4919-9df5-0dad0a266e32?utm_campaign=site-emails" target="_blank" class="project-link">Open Website</a>
-        </div>
-    </div>
-</div>
-<!-- AeroClub Workshop -->
-<div id="cert8" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('cert8')">&times;</span>
-        <h2>AeroClub Workshop</h2>
-        <img src="/Public/Assest/images/cert9.jpeg" alt="Certificate">
-        <p>The AeroClub Workshop was a hands-on session focused on aerospace, drone technology, and aerodynamics. Participants learned about drone assembly, flight dynamics, UAV programming, and real-world applications in robotics and AI. The workshop provided practical exposure to building and operating aerial vehicles, enhancing technical skills in autonomous systems and aviation technology</p>
-        <div class="modal-buttons">
-            <a href="/Public/Assest/images/cert9.jpeg" target="_blank" class="cert-link">View Certificate</a>
-            <!-- <a href="https://unstop.com/certificate-preview/10540e6d-28b9-4919-9df5-0dad0a266e32?utm_campaign=site-emails" target="_blank" class="project-link">Open Website</a> -->
-        </div>
-    </div>
-</div>
-
-
-        
- <!-- Experience Section -->
-<section id="experience" class="container my-5">
-    <h2 class="text-center">Experience</h2>
-
-    <div class="row">
-        <!-- Experience 1 -->
-        <div class="col-md-6" data-aos="fade-up">
-            <div class="card experience-card">
-                <div class="card-body">
-                    <h5 class="card-title">Web Developer - CSI Student Branch</h5>
-                    <p class="text-muted">Aug 2024 - Present</p>
-                    <p>Developed and maintained web platforms for CSI events, improving UI/UX and functionality.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Experience 2 -->
-        <div class="col-md-6" data-aos="fade-up">
-            <div class="card experience-card">
-                <div class="card-body">
-                    <h5 class="card-title">Intern - Code Alpha</h5>
-                    <p class="text-muted">Sep 2024 - Oct 2024</p>
-                    <p>Worked on full-stack projects, integrating APIs and optimizing database performance.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Experience 3 -->
-        <div class="col-md-6" data-aos="fade-up">
-            <div class="card experience-card">
-                <div class="card-body">
-                    <h5 class="card-title">Robotics & AI Member - Rise Robotics</h5>
-                    <p class="text-muted">Aug 2024 - Present</p>
-                    <p>Contributed to AI-driven robotic projects and research in autonomous systems.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Experience 4 -->
-        <div class="col-md-6" data-aos="fade-up">
-            <div class="card experience-card">
-                <div class="card-body">
-                    <h5 class="card-title">Developer - Atal Incubation Centre</h5>
-                    <p class="text-muted">2024</p>
-                    <p>Built innovative projects in VR, IoT, and AI, enhancing tech accessibility.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="skills" class="skills-section">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Skills & Soft Skills</h2>
-
-        <div class="skills-container">
-            
-            <!-- Technical Skills -->
-            <div class="skills-box" data-aos="fade-right">
-                <h3>Technical Skills</h3>
-                <ul>
-                    <li><i class="fas fa-code"></i> Web Development (HTML, CSS, JS)</li>
-                    <li><i class="fas fa-cogs"></i> DSA - C</li>
-                    <li><i class="fab fa-java"></i> Java</li>
-                    <li><i class="fas fa-database"></i> Fusion 360</li>
-                    <li><i class="fab fa-node-js"></i> KiCad</li>
-                </ul>
-            </div>
-
-            <!-- Soft Skills -->
-            <div class="skills-box" data-aos="fade-left">
-                <h3>Soft Skills</h3>
-                <ul>
-                    <li><i class="fas fa-users"></i> Leadership</li>
-                    <li><i class="fas fa-comments"></i> Communication</li>
-                    <li><i class="fas fa-lightbulb"></i> Problem-Solving</li>
-                    <li><i class="fas fa-clock"></i> Time Management</li>
-                    <li><i class="fas fa-brain"></i> Adaptability</li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<section id="languages" class="languages-section">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Languages I Speak</h2>
-        <div class="language-list">
-
-            <!-- English -->
-            <div class="language-item" data-aos="fade-right">
-                <i class="fas fa-globe"></i>
-                <h3>English</h3>
-                <p>Fluent</p>
-            </div>
-
-            <!-- Hindi -->
-            <div class="language-item" data-aos="fade-up">
-                <i class="fas fa-language"></i>
-                <h3>Hindi</h3>
-                <p>Native</p>
-            </div>
-
-            <!-- Marathi -->
-            <div class="language-item" data-aos="fade-left">
-                <i class="fas fa-comments"></i>
-                <h3>Marathi</h3>
-                <p>Native</p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-    </div>
-</section>
-<!-- Hobby Section -->
-<section id="hobbies" class="hobby-section py-5 bg-light">
-    <div class="container">
-        <h2 class="section-title text-center">My Hobbies & Interests</h2>
-        <div class="row mt-4">
-            
-            <!-- Hobby 1: Music -->
-            <div class="col-md-4">
-                <div class="card hobby-card text-center">
-                    <div class="card-body">
-                        <i class="fas fa-music fa-3x hobby-icon"></i>
-                        <h5 class="card-title mt-3">Listening to Music</h5>
-                        <p class="card-text">Music helps me relax and stay focused. I enjoy a mix of genres from lo-fi to energetic beats.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hobby 2: Watching Series -->
-            <div class="col-md-4">
-                <div class="card hobby-card text-center">
-                    <div class="card-body">
-                        <i class="fas fa-tv fa-3x hobby-icon"></i>
-                        <h5 class="card-title mt-3">Watching Series</h5>
-                        <p class="card-text">I love watching shows like <strong>Mirzapur</strong> and <strong>Kota Factory</strong>. They inspire and entertain me.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hobby 3: Robotics & AI -->
-            <div class="col-md-4">
-                <div class="card hobby-card text-center">
-                    <div class="card-body">
-                        <i class="fas fa-robot fa-3x hobby-icon"></i>
-                        <h5 class="card-title mt-3">Exploring Robotics & AI</h5>
-                        <p class="card-text">I enjoy working on AI-driven projects, automation, and building cool robotic applications.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-</section>    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Chart.js for Data Visualization -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Custom JavaScript -->
-    <script src="/Public/SCRIPTS/about.js"></script>
-    <footer>
-        <p>© 2025 Vedant Mahalle | Made with ❤️</p>
-    </footer>
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = link.getAttribute("href");
+        overlay.classList.add("active");
+        setTimeout(() => {
+          window.location.href = target;
+        }, 1200);
+      });
+    });
+  </script>
 </body>
 </html>

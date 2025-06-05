@@ -16,22 +16,22 @@ document.addEventListener("DOMContentLoaded", function () {
             bar.style.width = targetWidth + "%";
         });
     }
-    
+
     // Trigger progress bar animation when section is in viewport
     function isElementInViewport(el) {
         let rect = el.getBoundingClientRect();
         return rect.top >= 0 && rect.bottom <= window.innerHeight;
     }
-    
+
     function handleScrollAnimation() {
         let skillsSection = document.querySelector(".skills");
-        if (isElementInViewport(skillsSection)) {
+        if (skillsSection && isElementInViewport(skillsSection)) {
             animateProgressBars();
         }
     }
-    
+
     window.addEventListener("scroll", handleScrollAnimation);
-    
+
     // Modal Functionality
     let modals = document.querySelectorAll(".modal");
     let viewButtons = document.querySelectorAll(".view-details");
@@ -84,7 +84,28 @@ document.addEventListener("DOMContentLoaded", function () {
             card.style.boxShadow = "none";
         });
     });
+
+    // Floating Panels Hover Effect for All Sections
+    document.querySelectorAll(".glow-panel").forEach((panel) => {
+        panel.addEventListener("mouseenter", () => {
+            gsap.to(panel, {
+                y: -10,
+                scale: 1.03,
+                boxShadow: "0 15px 30px rgba(0, 255, 255, 0.3)",
+                duration: 0.3
+            });
+        });
+        panel.addEventListener("mouseleave", () => {
+            gsap.to(panel, {
+                y: 0,
+                scale: 1,
+                boxShadow: "0 8px 16px rgba(0, 255, 255, 0.1)",
+                duration: 0.3
+            });
+        });
+    });
 });
+
 // Modal Handling for Certificates
 function openModal(certId) {
     const modal = document.getElementById(certId);
@@ -126,80 +147,25 @@ document.querySelectorAll(".close-modal").forEach((button) => {
         }
     });
 });
-// GSAP Animation for Education Cards
-gsap.from(".education-card", {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    stagger: 0.3,
-    ease: "power3.out",
-});
-// GSAP Animations
-gsap.from(".education-box", {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    stagger: 0.3
-});
 
-// Hover Animation using GSAP
-document.querySelectorAll(".education-card").forEach((card) => {
-    card.addEventListener("mouseenter", () => {
-        gsap.to(card, {
-            scale: 1.05,
-            boxShadow: "0px 15px 30px rgba(0, 150, 255, 0.3)",
-            duration: 0.3,
-        });
-    });
-
-    card.addEventListener("mouseleave", () => {
-        gsap.to(card, {
-            scale: 1,
-            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-            duration: 0.3,
-        });
+// GSAP Animations for Panels
+['.education-box', '.hobby-card', '.language-item', '.skills-box', '.certificate-box'].forEach(selector => {
+    gsap.from(selector, {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        stagger: 0.3,
+        ease: "power3.out"
     });
 });
-// GSAP Animation for Hobby Cards
-gsap.from(".hobby-card", {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    stagger: 0.2,
-    ease: "power3.out",
+window.addEventListener('scroll', () => {
+  const scrollIndicator = document.getElementById('glowing-dot');
+  const scrollTop = window.scrollY || window.pageYOffset;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+  
+  // Limit between 0% and 100%
+  const limitedPercent = Math.min(Math.max(scrollPercent, 0), 100);
+  
+  scrollIndicator.style.left = `${limitedPercent}vw`;
 });
-
-// Hover Animation using GSAP
-document.querySelectorAll(".hobby-card").forEach((card) => {
-    card.addEventListener("mouseenter", () => {
-        gsap.to(card, {
-            scale: 1.05,
-            boxShadow: "0px 15px 30px rgba(0, 123, 255, 0.3)",
-            duration: 0.3,
-        });
-    });
-
-    card.addEventListener("mouseleave", () => {
-        gsap.to(card, {
-            scale: 1,
-            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-            duration: 0.3,
-        });
-    });
-});
-// GSAP Animations for Slide-In Effect
-gsap.from(".language-item", {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    stagger: 0.2
-});
-
-// GSAP Animations for Slide-In Effect
-gsap.from(".skills-box", {
-    opacity: 0,
-    y: 50,
-    duration: 3,
-    stagger: 1
-});
-

@@ -1,165 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Robotics Projects</title>
-    <link rel="stylesheet" href="/Public/CSSS/project.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Robotics Projects</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    
-    <!-- AOS Animations -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-     <!-- FontAwesome for Icons -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: #0ff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 70px; /* reserve space for bottom nav */
+    }
+
+    /* Sidebar - Bottom Nav */
+    nav.sidebar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 13rem;
+      box-shadow:
+        0 -1px 10px #0ff, 
+        0 -2px 20px #0ff;
+      z-index: 1000;
+      backdrop-filter: saturate(180%) blur(8px);
+      border-top: 1px solid #0ff;
+    }
+
+    nav.sidebar a.nav-icon {
+      color: #0ff;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      gap: 13rem;
+      transition: 
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+      text-decoration: none;
+      filter: drop-shadow(0 0 4px #0ff);
+      position: relative;
+    }
+
+    nav.sidebar a.nav-icon:hover,
+    nav.sidebar a.nav-icon.active {
+      color: #0ff;
+      box-shadow:
+        0 0 8px #0ff,
+        0 0 16px #0ff,
+        0 0 24px #00fff7,
+        0 0 30px #00fff7;
+      transform: scale(1.25) rotate(8deg);
+      animation: pulseGlow 2s infinite;
+      z-index: 10;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 6px #0ff);
+      }
+      50% {
+        filter: drop-shadow(0 0 16px #00fff7);
+      }
+    }
+
+    #animated-title {
+      font-weight: bold;
+      font-size: 3.5rem;
+      color: #00f0ff;
+      letter-spacing: 5px;
+      font-family: 'Audiowide', cursive;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #00f0ff;
+      width: 0;
+      animation: typing 3s steps(12) forwards, blink 0.7s step-end infinite;
+      margin: 0 auto 2rem;
+      max-width: fit-content;
+      text-align: center;
+      margin-top: -1rem;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 12ch; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .btn-glow {
+      background-color: #00f0ff;
+      border: none;
+      color: #ebe2e2;
+      text-shadow: 0 0 5px #fff;
+      box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+    }
+
+    .btn-glow:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
+    }
+
+    .card {
+      background-color: #1a1a1a;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00f0ff40;
+      column-gap: 5rem;
+    }
+
+    .card-title {
+      color: #f6feff;
+      text-shadow: 0 0 5px #00f0ff88;
+    }
+
+    .card-text {
+      color: #cccccc;
+      text-shadow: 0 0 2px #f8ffff55;
+    }
+
+    #project-detail {
+      background: #111;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00f0ff44;
+    }
+
+    #project-media-container img.media-photo {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 10px #00f0ff;
+    }
+
+    #project-blueprint {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00f0ff;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        padding-bottom: 7rem;
+      }
+    }
+
+    #glow-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #00f0ff;
+      box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s ease-out;
+    }
+
+    #redirect-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      color: #00f0ff;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    #redirect-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .redirect-message {
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+    }
+    #back-btn {
+      display: block;
+      margin: 0 auto 1.5rem auto;
+    }
+  </style>
 </head>
 <body>
+  <main class="main-content">
+    <h2 id="animated-title"></h2>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Vedant Mahalle</a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-user"></i> About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="project.html"><i class="fas fa-code"></i> Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="project3D.html"><i class="fas fa-3Dcode"></i> 3D Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="resume.html"><i class="fas fa-file-alt"></i> Resume</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-                </ul>
+    <section id="projects" class="container my-4">
+      <div class="text-center mb-4">
+        <button class="btn filter-btn active" data-filter="all">All</button>
+        <button class="btn filter-btn" data-filter="robotics">Robotics</button>
+        <button class="btn filter-btn" data-filter="ai">AI</button>
+        <button class="btn filter-btn" data-filter="web">Web Dev</button>
+      </div>
+
+      <div class="row" id="static-projects">
+        <div class="col-md-4 project-card robotics" data-aos="zoom-in">
+          <div class="card">
+            <img src="assets/robot-arm.jpg" class="card-img-top" alt="Robotic Arm" />
+            <div class="card-body">
+              <h5 class="card-title">Robotic Arm</h5>
+              <p class="card-text">Multi-axis robotic arm for precise control and automation.</p>
+              <button class="btn btn-glow view-details" data-id="1">View Details</button>
             </div>
-        </div>
-    </nav>
-
-    <!-- Projects Section -->
-    <section id="projects" class="container my-5">
-        <h2 class="text-center">My Projects</h2>
-
-        <!-- Filter Buttons -->
-        <div class="text-center mb-4">
-            <button class="btn btn-outline-primary filter-btn" data-filter="all">All</button>
-            <button class="btn btn-outline-primary filter-btn" data-filter="robotics">Robotics</button>
-            <button class="btn btn-outline-primary filter-btn" data-filter="ai">AI</button>
-            <button class="btn btn-outline-primary filter-btn" data-filter="web">Web Development</button>
+          </div>
         </div>
 
-        <div class="row" id="static-projects">
-            <!-- Project 1 -->
-            <div class="col-md-4 project-card robotics" data-aos="zoom-in">
-                <div class="card">
-                    <img src="assets/robot-arm.jpg" class="card-img-top" alt="Robotic Arm">
-                    <div class="card-body">
-                        <h5 class="card-title">Project 1</h5>
-                        <p class="card-text">--------------</p>
-                        <button class="btn btn-primary view-details" data-id="1">View Details</button>
-                    </div>
-                </div>
+        <div class="col-md-4 project-card ai" data-aos="zoom-in">
+          <div class="card">
+            <img src="assets/ai-car.jpg" class="card-img-top" alt="AI Self-Driving Car" />
+            <div class="card-body">
+              <h5 class="card-title">AI Self-Driving Car</h5>
+              <p class="card-text">A smart vehicle with object detection and navigation.</p>
+              <button class="btn btn-glow view-details" data-id="2">View Details</button>
             </div>
-
-            <!-- Project 2 -->
-            <div class="col-md-4 project-card ai" data-aos="zoom-in">
-                <div class="card">
-                    <img src="assets/ai-car.jpg" class="card-img-top" alt="AI Self-Driving Car">
-                    <div class="card-body">
-                        <h5 class="card-title">Project 2</h5>
-                        <p class="card-text">--------</p>
-                        <button class="btn btn-primary view-details" data-id="2">View Details</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="col-md-4 project-card robotics" data-aos="zoom-in">
-                <div class="card">
-                    <img src="assets/vr-robot.jpg" class="card-img-top" alt="VR Controlled Robot">
-                    <div class="card-body">
-                        <h5 class="card-title">Project 3</h5>
-                        <p class="card-text">---------------------------</p>
-                        <button class="btn btn-primary view-details" data-id="3">View Details</button>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+
+        <div class="col-md-4 project-card robotics" data-aos="zoom-in">
+          <div class="card">
+            <img src="assets/vr-robot.jpg" class="card-img-top" alt="VR Controlled Robot" />
+            <div class="card-body">
+              <h5 class="card-title">VR Controlled Robot</h5>
+              <p class="card-text">Remote robotic control with immersive VR interface.</p>
+              <button class="btn btn-glow view-details" data-id="3">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Project Detail Section (Initially Hidden) -->
+    <!-- Updated project-detail section -->
     <section id="project-detail" class="container py-5" style="display: none;">
-        <button id="back-btn" class="btn btn-secondary mb-3">🔙 Back to Projects</button>
-        <h2 id="project-title"></h2>
-        <div class="row">
-            <div class="col-md-7">
-                <h2 id="project-title"></h2>
-                <div id="project-media-container"></div>
-                <p id="project-description"></p>
-            </div>
-
-            <!-- Blueprint Section (Beside Video) -->
-            <div class="col-md-5">
-                <h4>Blueprint</h4>
-                <img id="project-blueprint" src="assets/blueprint-placeholder.jpg" class="img-fluid rounded shadow" alt="Blueprint">
-            </div>
+      <button id="back-btn" class="btn btn-secondary mb-3">🔙 Back to Projects</button>
+      <h2 id="project-title"></h2>
+      <div class="row mb-4">
+        <div class="col-md-7" id="project-media-container"></div>
+        <div class="col-md-5">
+          <p id="project-description"></p>
+          <div class="d-flex flex-column gap-3 mt-4">
+            <a id="github-link" href="#" target="_blank" class="btn btn-glow" rel="noopener noreferrer">
+              <i class="fab fa-github me-2"></i> GitHub Repo
+            </a>
+            <a id="team-link" href="#" target="_blank" class="btn btn-glow" rel="noopener noreferrer">
+              <i class="fab fa-linkedin me-2"></i> Team Member LinkedIn
+            </a>
+          </div>
         </div>
+      </div>
+      <h4>Blueprint</h4>
+      <img id="project-blueprint" src="assets/blueprint-placeholder.jpg" class="img-fluid" alt="Blueprint" />
     </section>
 
-    <!-- Centered 3D Model Section -->
-    <div class="text-center my-5">
-        <h3>3D Model Of Projects</h3>
-        <p>Explore my robotics projects in 3D!</p>
-        <a href="project3D.html" class="btn btn-primary">Explore 3D Projects</a>
+    <div class="text-center mt-5">
+      <h3>3D Model Of Projects</h3>
+      <p>Explore my robotics projects in 3D!</p>
+      <a href="project3D.html" class="btn btn-glow">Explore 3D Projects</a>
     </div>
-        <!-- Media Container (Video will be added dynamically here) -->
-        <div id="project-media-container"></div>
 
-        <p id="project-description"></p>
-    </section>
-    
-    <div class="row" id="projects-container">
-        <!-- Projects will be added here dynamically -->
-    </div>
-    
-    <!-- Project Details Section -->
-    <section id="project-detail" class="container py-5" style="display: none;">
-        <button id="back-btn" class="btn btn-secondary mb-3">🔙 Back to Projects</button>
-        <h2 id="project-title"></h2>
-        <div id="project-media-container"></div>
-        <p id="project-description"></p>
-    </section>
-    <div class="d-flex justify-content-center gap-5 my-5">
-        
-    
-        <!-- AI Object Detection Button
-        <div class="text-center">
-            <h3>Live AI Object Detection</h3>
-            <p>Test real-time AI object detection with your webcam!</p>
-            <a href="projectaidetection.html" class="btn btn-primary">Explore AI Detection</a>
-        </div>
-    </div> -->
-    
-<!-- <div class="text-center my-4">
-    <a href="projectaidetection.html" class="btn btn-primary">Explore AI Object Detection</a>
-</div> -->
-
-    <!-- Bootstrap & AOS Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-        });
-    </script>
-    <script src="/Public/SCRIPTS/project.js"></script>
-    <!-- <link rel="stylesheet" href="/Public/CSSS/chat.css">
-    <script src="/Public/SCRIPTS/chat.js"></script> -->
     <footer>
-        <p>© 2025 Vedant Mahalle | Made with ❤️</p>
+      <p>© 2025 Vedant Mahalle | Made with ❤️</p>
     </footer>
-   
+  </main>
+
+  <nav class="sidebar">
+    <a href="/Public/HTML/index.html" class="nav-icon neon-glow" title="Home"><i class="fas fa-home"></i></a>
+    <a href="/Public/HTML/about.html" class="nav-icon neon-glow" title="About">
+      <i class="fas fa-user-astronaut"></i>
+    </a>
+    <a href="/Public/HTML/project.html" class="nav-icon neon-glow" title="Projects">
+      <i class="fas fa-project-diagram"></i>
+    </a>
+
+    <!-- <a href="/Public/HTML/project3D.html" title="Resume"><i class="nav-icon neon-glow"></i></a> -->
+    <a href="resume.html" class="nav-icon neon-glow" title="Resume"><i class="fas fa-file-alt"></i></a>
+    <a href="contact.html" class="nav-icon neon-glow" title="Contact"><i class="fas fa-envelope"></i></a>
+</nav>
+    <div id="glow-cursor"></div>
+<div id="redirect-overlay">
+  <div class="redirect-message">🚀 Redirecting you...</div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, easing: "ease-in-out" });
+
+    const animatedTitle = document.getElementById("animated-title");
+    const titleText = "MY PROJECTS";
+    let index = 0;
+    function typeTitle() {
+      if (index <= titleText.length) {
+        animatedTitle.textContent = titleText.substring(0, index);
+        index++;
+        setTimeout(typeTitle, 150);
+      }
+    }
+    typeTitle();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const projects = {
+        "1": {
+          title: "Robotic Arm",
+          image: "assets/robot-arm.jpg",
+          photos: ["assets/robot-arm-demo1.jpg", "assets/robot-arm-demo2.jpg"],
+          description: "A robotic arm designed for precise multi-axis control and automation.",
+          github: "https://github.com/yourusername/robotic-arm",
+          team: "https://www.linkedin.com/in/teammember1"
+        },
+        "2": {
+          title: "AI Self-Driving Car",
+          image: "assets/ai-car.jpg",
+          photos: ["assets/ai-car-demo1.jpg", "assets/ai-car-demo2.jpg"],
+          description: "Smart vehicle with object detection, lane following, and autonomous navigation.",
+          github: "https://github.com/yourusername/ai-car",
+          team: "https://www.linkedin.com/in/teammember2"
+        },
+        "3": {
+          title: "VR Controlled Robot",
+          image: "assets/vr-robot.jpg",
+          photos: ["assets/vr-robot-demo1.jpg", "assets/vr-robot-demo2.jpg"],
+          description: "Remote control of robot using immersive virtual reality setup.",
+          github: "https://github.com/yourusername/vr-robot",
+          team: "https://www.linkedin.com/in/teammember3"
+        }
+      };
+
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const projectCards = document.querySelectorAll(".project-card");
+      const projectDetailSection = document.getElementById("project-detail");
+      const projectsSection = document.getElementById("projects");
+      const projectTitle = document.getElementById("project-title");
+      const projectDescription = document.getElementById("project-description");
+      const projectMediaContainer = document.getElementById("project-media-container");
+      const projectBlueprint = document.getElementById("project-blueprint");
+      const backBtn = document.getElementById("back-btn");
+      const githubLink = document.getElementById("github-link");
+      const teamLink = document.getElementById("team-link");
+
+      filterButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const filter = btn.getAttribute("data-filter");
+          filterButtons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          projectCards.forEach(card => {
+            card.style.display = (filter === "all" || card.classList.contains(filter)) ? "block" : "none";
+          });
+        });
+      });
+
+      document.querySelectorAll('.view-details').forEach(button => {
+        button.addEventListener('click', function () {
+          const id = this.getAttribute('data-id');
+          const project = projects[id];
+
+          // Show Project Detail Section
+          projectTitle.textContent = project.title;
+          projectDescription.textContent = project.description;
+
+          // Media container with photos
+          projectMediaContainer.innerHTML = '';
+          project.photos.forEach(photo => {
+            const img = document.createElement('img');
+            img.src = photo;
+            img.className = "img-fluid mb-2 me-2 rounded";
+            img.style.maxWidth = "48%";
+            projectMediaContainer.appendChild(img);
+          });
+
+          // Set GitHub and Team Links
+          githubLink.href = project.github;
+          teamLink.href = project.team;
+
+          // Show/Hide sections
+          projectsSection.style.display = 'none';
+          projectDetailSection.style.display = 'block';
+        });
+      });
+
+     backBtn.addEventListener('click', () => {
+  projectDetailSection.style.display = 'none';
+  projectsSection.style.display = 'block';
+  
+  const activeFilter = document.querySelector(".filter-btn.active");
+  if (activeFilter) activeFilter.click();
+});
+
+    });
+
+    const glowCursor = document.getElementById("glow-cursor");
+    document.addEventListener("mousemove", (e) => {
+      glowCursor.style.top = `${e.clientY}px`;
+      glowCursor.style.left = `${e.clientX}px`;
+    });
+    document.addEventListener("touchmove", (e) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        glowCursor.style.top = `${touch.clientY}px`;
+        glowCursor.style.left = `${touch.clientX}px`;
+      }
+    }, { passive: true });
+
+    const sidebarLinks = document.querySelectorAll(".sidebar a");
+    const overlay = document.getElementById("redirect-overlay");
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const url = link.href;
+        overlay.classList.add("active");
+        setTimeout(() => {
+          window.location.href = url;
+        }, 1200);
+      });
+    });
+  </script>
 </body>
 </html>
