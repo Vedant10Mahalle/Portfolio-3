@@ -26,7 +26,31 @@
       display: flex;
       flex-direction: column;
       padding-bottom: 70px; /* reserve space for bottom nav */
+      
     }
+    
+
+body {
+  background-image: url('/Public/Assest/images/h1.jpg'); /* your chosen background file */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: #0a0a0a; /* fallback background */
+}
+
+/* Optional: add a dark overlay for readability */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+
 
     /* Sidebar - Bottom Nav */
     nav.sidebar {
@@ -37,9 +61,9 @@
       height: 50px;
       background: #000;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      gap: 13rem;
+      gap: 1rem;
       box-shadow:
         0 -1px 10px #0ff, 
         0 -2px 20px #0ff;
@@ -54,10 +78,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
+      width: 51px;
       height: 48px;
       border-radius: 50%;
-      gap: 13rem;
+      gap: 1rem;
       transition: 
         color 0.3s ease,
         box-shadow 0.3s ease,
@@ -88,10 +112,10 @@
         filter: drop-shadow(0 0 16px #00fff7);
       }
     }
-
+    
     #animated-title {
       font-weight: bold;
-      font-size: 3.5rem;
+      font-size: 3rem;
       color: #00f0ff;
       letter-spacing: 5px;
       font-family: 'Audiowide', cursive;
@@ -120,7 +144,7 @@
       border: none;
       color: #ebe2e2;
       text-shadow: 0 0 5px #fff;
-      box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      box-shadow: 0 0 0px #00f0ff, 0 0 20px #00f0ff;
     }
 
     .btn-glow:hover {
@@ -245,27 +269,27 @@
       <div class="row" id="static-projects">
         <div class="col-md-4 project-card robotics" data-aos="zoom-in">
           <div class="card">
-            <img src="assets/robot-arm.jpg" class="card-img-top" alt="Robotic Arm" />
+            <img src="/Public/Assest/images/ap.png" class="card-img-top" alt="Robotic Arm" />
             <div class="card-body">
-              <h5 class="card-title">Robotic Arm</h5>
-              <p class="card-text">Multi-axis robotic arm for precise control and automation.</p>
+              <h5 class="card-title">Automatic Pet Feeder</h5>
+              <!-- <p class="card-text">Multi-axis robotic arm for precise control and automation.</p> -->
               <button class="btn btn-glow view-details" data-id="1">View Details</button>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4 project-card ai" data-aos="zoom-in">
+        <div class="col-md-4 project-card web dev" data-aos="zoom-in">
           <div class="card">
-            <img src="assets/ai-car.jpg" class="card-img-top" alt="AI Self-Driving Car" />
+            <img src="/Public/Assest/images/ss.png" class="card-img-top" alt="AI Self-Driving Car" />
             <div class="card-body">
-              <h5 class="card-title">AI Self-Driving Car</h5>
-              <p class="card-text">A smart vehicle with object detection and navigation.</p>
+              <h5 class="card-title">My Personal Portfolio</h5>
+              <!-- <p class="card-text">A smart vehicle with object detection and navigation.</p> -->
               <button class="btn btn-glow view-details" data-id="2">View Details</button>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4 project-card robotics" data-aos="zoom-in">
+        <!-- <div class="col-md-4 project-card robotics" data-aos="zoom-in">
           <div class="card">
             <img src="assets/vr-robot.jpg" class="card-img-top" alt="VR Controlled Robot" />
             <div class="card-body">
@@ -275,7 +299,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <!-- Updated project-detail section -->
@@ -305,10 +329,10 @@
       <p>Explore my robotics projects in 3D!</p>
       <a href="project3D.html" class="btn btn-glow">Explore 3D Projects</a>
     </div>
-
+<!-- 
     <footer>
       <p>© 2025 Vedant Mahalle | Made with ❤️</p>
-    </footer>
+    </footer> -->
   </main>
 
   <nav class="sidebar">
@@ -349,7 +373,7 @@
     document.addEventListener("DOMContentLoaded", () => {
       const projects = {
         "1": {
-          title: "Robotic Arm",
+          title: "Automatic Pet Feeder",
           image: "assets/robot-arm.jpg",
           photos: ["assets/robot-arm-demo1.jpg", "assets/robot-arm-demo2.jpg"],
           description: "A robotic arm designed for precise multi-axis control and automation.",
@@ -357,10 +381,10 @@
           team: "https://www.linkedin.com/in/teammember1"
         },
         "2": {
-          title: "AI Self-Driving Car",
+          title: "My Personal Portfolio",
           image: "assets/ai-car.jpg",
           photos: ["assets/ai-car-demo1.jpg", "assets/ai-car-demo2.jpg"],
-          description: "Smart vehicle with object detection, lane following, and autonomous navigation.",
+          description: "A futuristic and animated landing page that introduces my robotics profile with a glowing, high-tech UI. This section reflects my dual passion for robotics and web development, using clean HTML/CSS design and creative visual elements.",
           github: "https://github.com/yourusername/ai-car",
           team: "https://www.linkedin.com/in/teammember2"
         },

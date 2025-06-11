@@ -30,83 +30,104 @@
       flex-direction: column;
       padding-bottom: 70px; /* reserve space for bottom nav */
     }
+   
+
+        body {
+  background-image: url('/Public/Assest/images/h1.jpg'); /* your chosen background file */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: #0a0a0a; /* fallback background */
+}
+
+/* Optional: add a dark overlay for readability */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  z-index: -1;
+}
 
     
       
-  nav.sidebar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 13rem; /* large gap for desktop */
-  box-shadow:
-    0 -1px 10px #0ff, 
-    0 -2px 20px #0ff;
-  z-index: 1000;
-  backdrop-filter: saturate(180%) blur(8px);
-  border-top: 1px solid #0ff;
-}
+ /* Sidebar - Bottom Nav */
+    nav.sidebar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      box-shadow:
+        0 -1px 10px #0ff, 
+        0 -2px 20px #0ff;
+      z-index: 1000;
+      backdrop-filter: saturate(180%) blur(8px);
+      border-top: 1px solid #0ff;
+    }
 
-nav.sidebar a.nav-icon {
-  color: #0ff;
-  font-size: 1.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  transition: 
-    color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
-  text-decoration: none;
-  filter: drop-shadow(0 0 4px #0ff);
-  position: relative;
-}
+    nav.sidebar a.nav-icon {
+      color: #0ff;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 51px;
+      height: 48px;
+      border-radius: 50%;
+      gap: 1rem;
+      transition: 
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+      text-decoration: none;
+      filter: drop-shadow(0 0 4px #0ff);
+      position: relative;
+    }
 
-nav.sidebar a.nav-icon:hover,
-nav.sidebar a.nav-icon.active {
-  color: #0ff;
-  box-shadow:
-    0 0 8px #0ff,
-    0 0 16px #0ff,
-    0 0 24px #00fff7,
-    0 0 30px #00fff7;
-  transform: scale(1.25) rotate(8deg);
-  animation: pulseGlow 2s infinite;
-  z-index: 10;
-}
+    nav.sidebar a.nav-icon:hover,
+    nav.sidebar a.nav-icon.active {
+      color: #0ff;
+      box-shadow:
+        0 0 8px #0ff,
+        0 0 16px #0ff,
+        0 0 24px #00fff7,
+        0 0 30px #00fff7;
+      transform: scale(1.25) rotate(8deg);
+      animation: pulseGlow 2s infinite;
+      z-index: 10;
+    }
 
-@keyframes pulseGlow {
-  0%, 100% {
-    filter: drop-shadow(0 0 6px #0ff);
-  }
-  50% {
-    filter: drop-shadow(0 0 16px #00fff7);
-  }
-}
-
+    @keyframes pulseGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 6px #0ff);
+      }
+      50% {
+        filter: drop-shadow(0 0 16px #00fff7);
+      }
+    }
 /* ===== Responsive tweaks ===== */
 
 @media (max-width: 1200px) {
   nav.sidebar {
     gap: 8rem;
-    height: 48px;
+    height: 1200px;
   }
   nav.sidebar a.nav-icon {
-    width: 42px;
+    width: 1200px;
     height: 42px;
-    font-size: 1.6rem;
+    font-size: 1.9rem;
   }
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   nav.sidebar {
     gap: 4rem;
     height: 45px;
@@ -117,7 +138,7 @@ nav.sidebar a.nav-icon.active {
     height: 36px;
     font-size: 1.4rem;
   }
-}
+} */
 
     
 
@@ -174,12 +195,12 @@ nav.sidebar a.nav-icon.active {
     textarea.form-control {
       background: #000;
       border: 2px solid #0ff;
-      border-radius: 8px;
+      border-radius: 4%;
       color: #0ff;
-      padding: 1rem 9rem;
+      padding: 1.12rem 5rem;
       font-size: 1rem;
       font-family: 'Orbitron', monospace;
-      outline-offset: 2px;
+      outline-offset: 8px;
       transition: border-color 0.3s ease;
     }
 
@@ -211,6 +232,7 @@ nav.sidebar a.nav-icon.active {
     button.btn-primary {
       background: linear-gradient(90deg, #00fff7, #0ff);
       border: none;
+      border-radius: 4%;
       padding: 1rem;
       font-size: 1.2rem;
       font-weight: 700;
@@ -299,16 +321,50 @@ nav.sidebar a.nav-icon.active {
         font-size: 3rem;
       }
     }
+
+    #redirect-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      color: #00f0ff;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    #redirect-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .redirect-message {
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+    }
+
   </style>
 </head>
 <body>
  <!-- Sidebar / Bottom Nav -->
 <nav class="sidebar" role="navigation" aria-label="Bottom navigation">
-  <a href="index.html" class="nav-icon neon-glow" title="Home"><i class="fas fa-home"></i></a>
-  <a href="about.html" class="nav-icon neon-glow" title="About Me"><i class="fas fa-user"></i></a>
-  <a href="project.html" class="nav-icon neon-glow" title="Projects"><i class="fas fa-code"></i></a>
-  <a href="resume.html" class="nav-icon neon-glow" title="Resume"><i class="fas fa-file-alt"></i></a>
-  <a href="contact.html" class="nav-icon neon-glow" title="Contact"><i class="fas fa-envelope"></i></a>
+  <a href="/index.html" class="nav-icon neon-glow" title="Home"><i class="fas fa-home"></i></a>
+  <a href="/Public/HTML/about.html" class="nav-icon neon-glow" title="About"><i class="fas fa-user-astronaut"></i></a>
+ <a href="/Public/HTML/project.html" class="nav-icon neon-glow" title="Projects"><i class="fas fa-project-diagram"></i></a>
+  <a href="/Public/HTML/resume.html" class="nav-icon neon-glow" title="Resume"><i class="fas fa-file-alt"></i></a>
+  <a href="/Public/HTML/contact.html" class="nav-icon neon-glow" title="Contact"><i class="fas fa-envelope"></i></a>
 </nav>
 
 
@@ -425,7 +481,7 @@ nav.sidebar a.nav-icon.active {
       </div>
     </section>
 <footer class="mt-5 text-center">
-  <p style="color: #0ff; font-weight: 900; font-size: 1.3rem; font-family: 'Orbitron', sans-serif; letter-spacing: 2px;">
+  <p style="color: #0ff; font-weight: 900; font-size: 1.2rem; font-family: 'Orbitron', sans-serif; letter-spacing: 2px;">
     Precision.&nbsp;&nbsp;&nbsp;Passion.&nbsp;&nbsp;&nbsp;Progress.
   </p>
   <p style="color: #aaa; margin-top: 1.5rem;">
@@ -435,10 +491,17 @@ nav.sidebar a.nav-icon.active {
 
 
   </main>
-
+<div id="redirect-overlay">
+    
+    <div class="redirect-message">🚀 Redirecting you ....</div>
+  </div>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const form = document.getElementById("contactForm");
+
+
+// const sidebarLinks = document.querySelectorAll(".sidebar a");
+    const overlay = document.getElementById("redirect-overlay");
 
       form.addEventListener("submit", function (event) {
         event.preventDefault();

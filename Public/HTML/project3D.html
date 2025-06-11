@@ -38,6 +38,27 @@
       padding-bottom: 70px; /* reserve space for bottom nav */
     }
 
+
+    body {
+  background-image: url('/Public/Assest/images/h1.jpg'); /* your chosen background file */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: #0a0a0a; /* fallback background */
+}
+
+/* Optional: add a dark overlay for readability */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  z-index: -1;
+}
+
+
     /* Sidebar - Bottom Nav */
     nav.sidebar {
       position: fixed;
@@ -47,9 +68,9 @@
       height: 50px;
       background: #000;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      gap: 13rem;
+      gap: 1rem;
       box-shadow:
         0 -1px 10px #0ff, 
         0 -2px 20px #0ff;
@@ -64,10 +85,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
+      width: 51px;
       height: 48px;
       border-radius: 50%;
-      gap: 13rem;
+      gap: 1rem;
       transition: 
         color 0.3s ease,
         box-shadow 0.3s ease,
