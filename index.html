@@ -330,22 +330,63 @@ nav.sidebar a.nav-icon.active {
   padding: 0.2em 1em;
   border-radius: 1px;
 }
+
+
+.section-bg {
+  width: 100vw;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.main-content {
+  color: white; /* or adjust based on background */
+}
+
+@media (max-width: 768px) {
+  .section-bg {
+    padding: 40px 20px;
+  }
+
+  .animated-title h1 {
+    font-size: 1.8rem;
+  }
+
+  .animated-subtitle,
+  .typewriter-tagline,
+  .typing-robot-line {
+    font-size: 1rem;
+  }
+}
+
 </style>
 
 </head>
 <body>
    <div class="background-image"></div>
-  <!-- Main Content -->
-   <div class="main-content">
-  <p class="typewriter-tagline top-right">WELCOME TO MY WORLD</p>
+  <<!-- HERO SECTION -->
+<!-- <section class="section-bg" style="background-image: url('/Public/Assest/images/3.jpg');"> -->
+  <div class="main-content">
+    <p class="typewriter-tagline top-right">WELCOME TO MY WORLD</p>
 
-  <div class="animated-title">
-    <h1><span class="typewriter-text">Hi, I'm Vedant </span></h1>
+    <div class="animated-title">
+      <h1><span class="typewriter-text">Hi, I'm Vedant </span></h1>
+    </div>
+
+    <p class="animated-subtitle">Robotics & AI Enthusiast</p>
+
+    <p class="typing-robot-line" id="typing-text"></p>
   </div>
+</section>
 
-  <p class="animated-subtitle">Robotics & AI Enthusiast</p>
-   <!-- <p class="animated-subtitle">Robotics & AI Enthusiast</p> -->
-<p class="typing-robot-line" id="typing-text"></p>
 
     <!-- <a href="/Public/HTML/project.html"><button class="btn-glow">View Projects</button></a> -->
     <!-- <a href="/Public/HTML/about.html"><button class="btn-glow">About Me</button></a> -->
