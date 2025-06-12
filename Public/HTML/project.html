@@ -53,45 +53,42 @@ body::after {
 
 
     /* Sidebar - Bottom Nav */
-    nav.sidebar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 50px;
-      background: #000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      box-shadow:
-        0 -1px 10px #0ff, 
-        0 -2px 20px #0ff;
-      z-index: 1000;
-      backdrop-filter: saturate(180%) blur(8px);
-      border-top: 1px solid #0ff;
-    }
+   nav.sidebar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* slightly more height */
+  background: #000;
+  display: flex;
+  justify-content: space-evenly; /* CHANGED */
+  align-items: center;
+  box-shadow:
+    0 -1px 10px #0ff, 
+    0 -2px 20px #0ff;
+  z-index: 1000;
+  backdrop-filter: saturate(180%) blur(8px);
+  border-top: 1px solid #0ff;
+}
+
 
     nav.sidebar a.nav-icon {
-      color: #0ff;
-      font-size: 1.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 51px;
-      height: 48px;
-      border-radius: 50%;
-      gap: 1rem;
-      transition: 
-        color 0.3s ease,
-        box-shadow 0.3s ease,
-        transform 0.3s ease;
-      text-decoration: none;
-      filter: drop-shadow(0 0 4px #0ff);
-      position: relative;
-    }
+  color: #0ff;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1; /* NEW: ensures equal spacing for all icons */
+  height: 48px;
+  text-decoration: none;
+  filter: drop-shadow(0 0 4px #0ff);
+  transition: 
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
 
-    nav.sidebar a.nav-icon:hover,
+ nav.sidebar a.nav-icon:hover,
     nav.sidebar a.nav-icon.active {
       color: #0ff;
       box-shadow:
@@ -113,6 +110,7 @@ body::after {
       }
     }
     
+
     #animated-title {
       font-weight: bold;
       font-size: 3rem;
@@ -151,24 +149,46 @@ body::after {
       transform: scale(1.05);
       box-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
     }
-
     .card {
-      background-color: #1a1a1a;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #00f0ff40;
-      column-gap: 5rem;
-    }
-
-    .card-title {
+  margin: 1rem 0; /* Add vertical spacing */
+}
+.card {
+   background-color: #1a1a1a;
+  border: none;
+  border-radius: 20px;
+  padding: 1.2rem;
+  animation: cardGlowPulse 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+.card-title {
       color: #f6feff;
       text-shadow: 0 0 5px #00f0ff88;
     }
 
-    .card-text {
+.card-text {
       color: #cccccc;
       text-shadow: 0 0 2px #f8ffff55;
     }
+.card:hover {
+  transform: scale(1.03);
+}
+
+
+    @keyframes cardGlowPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 12px #00f0ff88,
+      0 0 18px #00f0ff55,
+      0 0 24px #00f0ff33;
+  }
+  50% {
+    box-shadow:
+      0 0 16px #00fff7aa,
+      0 0 24px #00fff777,
+      0 0 32px #00fff744;
+  }
+}
+
 
     #project-detail {
       background: #111;
