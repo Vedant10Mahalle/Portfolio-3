@@ -10,7 +10,8 @@
 
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
@@ -29,7 +30,7 @@
 
 
 
-     /* Sidebar - Bottom Nav */
+/* NAVBAR */
    nav.sidebar {
   position: fixed;
   bottom: 0;
@@ -157,70 +158,72 @@
   color: white;
 }
 
-/* Container that adapts height to content */
+/* CERTIFICATES*/
+
 .template-box {
-  width: 90%;
-  margin: 30px auto;
-  background: #111;
-  border-radius: 15px;
-  padding: 20px;
-  transition: box-shadow 0.4s ease;
+  padding: 2rem;
+  background-color: #0d0d0d;
 }
 
-/* Glow effect only on hover */
-.template-box:hover {
-  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
-}
-
-/* Grid of cards: 4 per row */
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  align-items: start;
 }
 
-/* Each card style */
 .cert-card {
-  background: #222;
-  border-radius: 10px;
-  padding: 15px;
+  background: #111;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
-  box-shadow: 0 0 8px #0ff44d40;
-  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 1rem;
+  color: #e0f7ff;
 }
 
 .cert-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
+}
+
+.cert-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  color: #00f0ff;
 }
 
 .cert-card img {
   width: 100%;
-  border-radius: 10px;
-  margin: 10px 0;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  box-shadow: 0 0 6px rgba(0, 255, 255, 0.1);
 }
 
-/* Buttons inside card */
 .btns {
   display: flex;
-  justify-content: space-around;
-  margin-top: 10px;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .btns button {
-  background: #0ff;
-  color: #000;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  background-color: #0f0f0f;
+  border: 1px solid #00f0ff;
+  color: #00f0ff;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s ease;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btns button:hover {
-  background: #fff;
-  color: #000;
+  background-color: #00f0ff;
+  color: #0d0d0d;
+  transform: scale(1.05);
 }
 
 /* Responsive layout for tablets and mobile */
@@ -235,9 +238,47 @@
     grid-template-columns: 1fr;
   }
 }
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #0ff;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 3px;
+  width: 80px;
+  background-color: #0ff;
+  border-radius: 10px;
+  box-shadow: 0 0 8px #0ff;
+}
+.section-title:hover {
+  animation: glowTitle 1.5s infinite alternate;
+}
+
+@keyframes glowTitle {
+  0% {
+    text-shadow: 0 0 5px #0ff;
+  }
+  100% {
+    text-shadow: 0 0 15px #0ff;
+  }
+}
 
 
-    #glow-cursor {
+/* CURSOR */
+
+#glow-cursor {
       position: fixed;
       top: 0;
       left: 0;
@@ -267,7 +308,9 @@
       100% { transform: translateY(0px); }
     }
 
-    #redirect-overlay {
+/* REDIRECTING */
+
+ #redirect-overlay {
       position: fixed;
       top: 0; left: 0;
       width: 100vw;
@@ -319,6 +362,274 @@ body::after {
   z-index: -1;
 }
 
+.tech-box {
+  background-color: #111;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px #00f0ff44;
+  color: #e0f7ff;
+  margin-bottom: 2rem;
+}
+
+.tech-section-title {
+ font-family: 'Orbitron', sans-serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #00f0ff;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 240, 255, 0.4);
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+.tech-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.2rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #cceeff;
+}
+
+.tech-item i {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+  color: #00eaff;
+}
+
+
+
+/* INTERNSHIP SECTION */
+
+.internship-box {
+  background-color: #111;
+  border-left: 4px solid #00f0ff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+  padding: 1.8rem 2rem;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 720px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.internship-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+}
+
+.internship-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.internship-title {
+  font-size: 1.4rem;
+  color: #00f0ff;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.internship-meta {
+  flex: 1;
+}
+
+.internship-company {
+  color: #eafcff;
+  font-weight: 500;
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.internship-date {
+  font-size: 0.95rem;
+  color: #a3e3f3;
+  font-style: italic;
+  margin: 0;
+}
+
+.internship-role-tag {
+  background-color: #00f0ff10;
+  color: #00f0ff;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  border: 1px solid #00f0ff55;
+  margin-top: 0.5rem;
+}
+
+.internship-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.internship-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.8rem;
+  color: #eafcff;
+  font-size: 1rem;
+}
+
+.internship-list li i {
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  color: #00f0ff;
+}
+.internship-section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #00f0ff;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 240, 255, 0.4);
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+
+/* ACTIVITIES */
+
+.activity-box {
+  background-color: #111;
+  border-left: 5px solid #00f0ff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+  padding: 1.5rem 2rem;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 720px; /* Adjust this value to control the box width */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+}
+
+.activity-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #00f0ff;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 240, 255, 0.4);
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+.activity-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.activity-list li {
+  font-size: 1rem;
+  color: #eafcff;
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.activity-list li::before {
+  content: '•';
+  color: #00f0ff;
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* EDUCATION & LANGUAGE */
+
+.card {
+  background-color: #111;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00f0ff33;
+  color: #e0f7ff;
+  height: 100%;
+}
+
+.section-title {
+ font-family: 'Orbitron', sans-serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #00f0ff;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 240, 255, 0.4);
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+.info-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 0.95rem;
+  line-height: 1.6rem;
+}
+
+.info-list li {
+  margin-bottom: 0.8rem;
+}
+
+.lang-level {
+  float: right;
+  color: #a0dfff;
+  font-size: 0.85rem;
+}
+.language-box {
+  background-color: #111;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
+  color: #e0f7ff;
+  max-height: 240px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.language-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 16px #00f0ff55;
+}
+
+.language-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.language-list li {
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.language-list i {
+  color: #00f0ff;
+}
+
+.lang-level {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-left: 0.3rem;
+}
 
 
   </style>
@@ -330,11 +641,11 @@ body::after {
   <main class="main-content">
     
 <section class="section-bg" style="background-image: url('images/about-bg.jpg');">
-  <div class="content">
-    <h2 id="animated-title">About Me</h2>
-    <p>Some content here...</p>
-  </div>
-</section>
+ <div class="content">
+  <h2 id="animated-title"><i class=></i> About Me</h2>
+
+</div>
+
 
     <!-- <h2 id="animated-title">About Me</h2> -->
 
@@ -352,149 +663,190 @@ body::after {
         <p>Hello! I'm Vedant Mahalle, a passionate robotics and AI enthusiast dedicated to creating impactful innovations. I love building intelligent systems and exploring new technologies in automation, machine learning, and embedded systems.</p>
       </div>
 
-      <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col" data-aos="fade-up" data-aos-delay="100">
-          <div class="card p-3">
-            <h5 class="card-title">Education</h5>
-            <ul>
-              <li><strong>Bachelor of Technology:</strong> NMAM Institute of Technology Nitte (2023 - Present)</li>
-              <li><strong>Grade 11th & 12th:</strong> Dr. Chandrabhanu Sonvane Jr. College (2020-2022)</li>
-              <li><strong>Grade 1st - 10th</strong> Kripa Sadan Convent High School (2012-2020)</li>
-            </ul>
-          </div>
-        </div>
 
-        <div class="col" data-aos="fade-up" data-aos-delay="200">
-          <div class="card p-3">
-            <h5 class="card-title">Technical Skills</h5>
-            <ul>
-              <li>Java, Python, HTML, HTML5, CSS, CSS3, Javascript </li>
-              <li>ROS2</li>
-              <li>Git, Arduino, Keil UVision, Github</li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
-      <div class="card p-4" data-aos="fade-up" data-aos-delay="300">
-        <h5 class="card-title">Internship</h5>
-        <p><strong>3D VR IOT</strong> - Atal Incubation Centre (Aug 2023 - Feb 2024)</p>
-        <ul>
-          <li>Worked on 3D, VR, IOT </li>
-          <li>Developed Automatic Pet Feeder for pets.</li>
-          <li>Contributed to Blynk App.</li>
-        </ul>
-      </div>
+<!-- INTERNSHIP SECTION -->
 
-      <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col" data-aos="fade-up" data-aos-delay="400">
-          <div class="card p-3">
-            <h5 class="card-title">Co-Curricular Activities</h5>
-            <ul>
-              <li>Co-Documentation Head - Hackerearth Club, Nitte (2025-Present)</li>
-              <li>Digital & Social Media Team Member - RISE (R-AI Branch Association)  (2024-2025)</li>
-              <li>Treasurer - Bureau of Indian Standards  (2024-2025)</li>
-              <li>Executive Committee Member - Computer Society of India (2024-2025)</li>
-            </ul>
-          </div>
-        </div>
+<div class="card internship-box" data-aos="fade-up" data-aos-delay="300">
+  <h5 class="internship-section-title"><i class="fas fa-briefcase"></i> Internship</h5>
+  <div class="internship-header">
+    <div class="internship-meta">
+      <p class="internship-company">Atal Incubation Centre</p>
+      <p class="internship-date">(Aug 2023 – Feb 2024)</p>
+    </div>
+    <div class="internship-role-tag">3D • VR • IoT</div>
+  </div>
+  <ul class="internship-list">
+    <li><i class="fas fa-cube"></i> Developed immersive solutions using 3D and VR technologies.</li>
+    <li><i class="fas fa-bone"></i> Designed and prototyped an Automatic Pet Feeder system.</li>
+    <li><i class="fas fa-mobile-alt"></i> Integrated IoT functionality via the Blynk App platform.</li>
+  </ul>
+</div>
 
-        <div class="col" data-aos="fade-up" data-aos-delay="500">
-          <div class="card p-3">
-            <h5 class="card-title">Languages I Speak</h5>
-            <ul>
-              <li>English (Fluent)</li>
-              <li>Hindi (Fluent)</li>
-              <li>Marathi (Native)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
-   <div class="template-box">
+
+
+  <!-- SKILLS SECTION  -->
+
+  <div class="card tech-box" data-aos="fade-up" data-aos-delay="300">
+  <h5 class="tech-section-title"><i class=></i> Tech Stacks</h5>
+  <div class="tech-header">
+    <div class="tech-icons">
+      <div class="tech-item"><i class="fab fa-java"></i><span>Java</span></div>
+      <div class="tech-item"><i class="fab fa-python"></i><span>Python</span></div>
+      <div class="tech-item"><i class="fab fa-html5"></i><span>HTML5</span></div>
+      <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+      <div class="tech-item"><i class="fab fa-js-square"></i><span>JavaScript</span></div>
+      <div class="tech-item"><i class="fas fa-robot"></i><span>ROS2</span></div>
+      <div class="tech-item"><i class="fab fa-github"></i><span>GitHub</span></div>
+      <div class="tech-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
+      <div class="tech-item"><i class="fas fa-microchip"></i><span>Arduino</span></div>
+      <div class="tech-item"><i class="fas fa-code"></i><span>Keil</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ACTIVITIES -->
+
+
+<div class="card activity-box" data-aos="fade-up" data-aos-delay="400">
+  <h5 class="activity-title">Co-Curricular Activities</h5>
+  <ul class="activity-list">
+    <li><strong>Co-Documentation Head</strong> – Hackerearth Club, Nitte (2025–Present)</li>
+    <li><strong>Digital & Social Media Team</strong> – RISE (R-AI Branch Association) (2024–2025)</li>
+    <li><strong>Treasurer</strong> – Bureau of Indian Standards (2024–2025)</li>
+    <li><strong>Executive Committee Member</strong> – Computer Society of India (2024–2025)</li>
+  </ul>
+</div>
+
+
+
+
+  <!-- EDUCATION -->
+<div class="row g-4">
+  <!-- Education Section -->
+  <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+    <div class="card education-box">
+      <h5 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h5>
+      <ul class="info-list">
+        <li>
+          <strong>Bachelor of Technology</strong><br>
+          NMAM Institute of Technology, Nitte<br>
+          <small>(2023 - Present)</small>
+        </li>
+        <li>
+          <strong>Grade 11 & 12</strong><br>
+          Dr. Chandrabhanu Sonvane Jr. College<br>
+          <small>(2020 - 2022)</small>
+        </li>
+        <li>
+          <strong>Grade 1 - 10</strong><br>
+          Kripa Sadan Convent High School<br>
+          <small>(2012 - 2020)</small>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Languages Section -->
+ <div class="col" data-aos="fade-up" data-aos-delay="500">
+  <div class="card language-box">
+    <h5 class="section-title"><i class="fas fa-language"></i> Languages I Speak</h5>
+    <ul class="language-list">
+      <li><i class="fas fa-check-circle"></i> English <span class="lang-level">(Fluent)</span></li>
+      <li><i class="fas fa-check-circle"></i> Hindi <span class="lang-level">(Fluent)</span></li>
+      <li><i class="fas fa-star"></i> Marathi <span class="lang-level">(Native)</span></li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- CERTIFICATES -->
+
+
+<section id="certifications" class="template-box">
+  <h2 class="section-title"><i class="fas fa-certificate"></i> Certificates</h2>
   <div class="cert-grid">
-    <!-- Certificate Card 1 -->
+
+    <!-- Certificate 1 -->
     <div class="cert-card">
       <h3>Design4Dev</h3>
-      <img src="/Public/Assest/images/cert1.jpg" alt="Certificate 1" />
+      <img src="/Public/Assest/images/cert1.jpg" alt="Design4Dev Certificate">
       <div class="btns">
         <button onclick="window.open('/Public/Assest/images/cert1.jpg')">View Certificate</button>
         <button onclick="window.open('https://learn-mate-tau.vercel.app/')">View Project</button>
       </div>
     </div>
 
-    <!-- Repeat this block for more cards -->
+    <!-- Certificate 2 -->
     <div class="cert-card">
       <h3>PCB Workshop</h3>
-      <img src="/Public/Assest/images/cert2.jpg" alt="Certificate 2" />
+      <img src="/Public/Assest/images/cert2.jpg" alt="PCB Workshop Certificate">
       <div class="btns">
         <button onclick="window.open('/Public/Assest/images/cert2.jpg')">View Certificate</button>
-        <!-- <button onclick="window.open('https://projectlink.com')">View Project</button> -->
       </div>
     </div>
 
-    <!-- Add as many cards as needed -->
-
+    <!-- Certificate 3 -->
     <div class="cert-card">
-      <h3>Fusion 360 Workshop </h3>
-      <img src="/Public/Assest/images/cert3.jpg" alt="Certificate 2" />
+      <h3>Fusion 360 Workshop</h3>
+      <img src="/Public/Assest/images/cert3.jpg" alt="Fusion 360 Workshop Certificate">
       <div class="btns">
         <button onclick="window.open('/Public/Assest/images/cert3.jpg')">View Certificate</button>
-        <!-- <button onclick="window.open('https://projectlink.com')">View Project</button> -->
       </div>
     </div>
-    
-    
+
+    <!-- Certificate 4 -->
     <div class="cert-card">
       <h3>Code-Alpha Internship</h3>
-      <img src="/Public/Assest/images/cert6.jpg" alt="Certificate 2" />
+      <img src="/Public/Assest/images/cert6.jpg" alt="Code-Alpha Internship Certificate">
       <div class="btns">
         <button onclick="window.open('/Public/Assest/images/cert6.jpg')">View Certificate</button>
-        <!-- <button onclick="window.open('https://projectlink.com')">View Project</button> -->
       </div>
     </div>
 
-<div class="cert-card">
+    <!-- Certificate 5 -->
+    <div class="cert-card">
       <h3>PES Hackathon</h3>
-      <img src="/Public/Assest/images/cert7.jpeg" alt="Certificate 2" />
+      <img src="/Public/Assest/images/cert7.jpeg" alt="PES Hackathon Certificate">
       <div class="btns">
         <button onclick="window.open('/Public/Assest/images/cert7.jpeg')">View Certificate</button>
-        <!-- <button onclick="window.open('https://projectlink.com')">View Project</button> -->
       </div>
     </div>
 
-
-
+    <!-- Certificate 6 -->
     <div class="cert-card">
-      <h3>3D VR IOT Internship</h3>
-      <img src="/Public/Assest/images/cert8.jpeg" alt="Certificate 2" />
+      <h3>3D VR IoT Internship</h3>
+      <img src="/Public/Assest/images/cert8.jpeg" alt="3D VR IoT Internship Certificate">
       <div class="btns">
         <button onclick="window.open('/Public/Assest/images/cert8.jpeg')">View Certificate</button>
-        <!-- <button onclick="window.open('https://projectlink.com')">View Project</button> -->
       </div>
     </div>
 
+    <!-- Certificate 7 -->
     <div class="cert-card">
       <h3>Aeroclub Workshop</h3>
-      <img src="/Public/Assest/images/cert9.jpeg" alt="Certificate 2" />
+      <img src="/Public/Assest/images/cert9.jpeg" alt="Aeroclub Workshop Certificate">
       <div class="btns">
         <button onclick="window.open('/Public/Assest/images/cert9.jpeg')">View Certificate</button>
         <button onclick="window.open('https://projectlink.com')">View Project</button>
       </div>
     </div>
 
+    <!-- Certificate 8 -->
     <div class="cert-card">
       <h3>Tata Imaging Challenge</h3>
-      <img src="/Public/Assest/images/cert9.jpg" alt="Certificate 2" />
+      <img src="/Public/Assest/images/cert9.jpg" alt="Tata Imaging Challenge Certificate">
       <div class="btns">
         <button onclick="window.open('/Public/Assest/images/cert9.jpg')">View Certificate</button>
         <button onclick="window.open('https://projectlink.com')">View Project</button>
       </div>
     </div>
 
-
   </div>
-</div>
+</section>
+
 
   </main>
 

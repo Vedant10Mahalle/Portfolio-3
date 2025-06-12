@@ -31,7 +31,7 @@
     
 
 body {
-  background-image: url('/Public/Assest/images/3.jpg'); /* your chosen background file */
+  background-image: url('/Public/Assest/images/h1.jpg'); /* your chosen background file */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -136,7 +136,16 @@ body::after {
     @keyframes blink {
       50% { border-color: transparent; }
     }
-
+  .btns button {
+  padding: 0.6rem 1rem;
+  background-color: #0f0f0f;
+  border: 1px solid #00f0ff;
+  color: #00f0ff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
     .btn-glow {
       background-color: #00f0ff;
       border: none;
@@ -145,10 +154,11 @@ body::after {
       box-shadow: 0 0 0px #00f0ff, 0 0 20px #00f0ff;
     }
 
-    .btn-glow:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
-    }
+  .btns button:hover {
+  background-color: #00f0ff;
+  color: #0d0d0d;
+  transform: scale(1.05);
+}
     .card {
   margin: 1rem 0; /* Add vertical spacing */
 }

@@ -336,39 +336,37 @@ html, body {
 }
 
 .hero-section {
-  text-align: center;
   position: relative;
-  z-index: 1;
-}
-
-/* 🔵 GLOW BUTTONS SIDE-BY-SIDE */
-.hero-buttons {
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  background-image: url('/Public/Assest/images/your-hero-bg.jpg');
+  background-size: cover;       /* Ensures full coverage */
+  background-position: center;  /* Centers image on all devices */
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* Avoids unwanted fixed cropping on mobile */
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  gap: 1.5rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-  /* /* z-index: 3; */
-  position: relative;
-} 
-
-/* 🔵 VISIBLE TRANSPARENT GLOW BUTTON */
-.btn-glow {
-  background-color: transparent;
-  border: 2px solid #00ffff;
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff;
-  box-shadow: 0 0 10px #00ffff;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-weight: 600;
+  align-items: center;
 }
 
-.btn-glow:hover {
-  background-color: rgba(0, 255, 255, 0.1);
-  box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
-  color: #000;
+/* Ensure content inside hero is responsive */
+.hero-section .main-content,
+.hero-section .hero-content {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* Mobile tweak: adjust the section height if needed */
+@media (max-width: 768px) {
+  .hero-section {
+    background-position: top center; /* Focus on top-middle of image */
+    height: auto;
+    min-height: 70vh; /* Slightly shorter when content squeezes */
+    padding: 4rem 1rem;
+  }
 }
 
 
@@ -484,7 +482,7 @@ html, body {
   left: 0;
   width: 100lvw;
   height: 100lvh;
-  background-image: url('/Public/Assest/images/3.jpg'); /* ✔ Correct path */
+  background-image: url('/Public/Assest/images/hhherobg.png'); /* ✔ Correct path */
   background-size: cover;
   background-position: center;
   background-repeat: repeat;
