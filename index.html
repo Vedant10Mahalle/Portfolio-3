@@ -276,7 +276,7 @@ html, body {
 .typewriter-tagline {
   background-color: transparent !important;
   color: #0ff;
-  font-size: 1.8rem;
+  font-size: 1rem;
   white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid #0ff;
@@ -284,6 +284,7 @@ html, body {
   animation: typing-tagline 2.5s steps(30, end) forwards, blink-cursor-tagline 0.7s step-end infinite;
   text-shadow: 0 0 5px #0ff;
   letter-spacing: 2px;
+  margin: initial;
   margin-bottom: 1.2rem;
   text-align: center;
 
@@ -310,14 +311,14 @@ html, body {
 }
 
 .animated-subtitle {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #00fefb;
   text-shadow: 0 0 10px #00fefb;
   white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid #00fefb;
   width: 0;
-  margin: 0 auto;
+  margin: initial;
   font-family: 'Orbitron', sans-serif;
   animation: typing-subtitle 3s steps(30, end) forwards;
   margin-bottom: 1.5rem;
@@ -481,12 +482,12 @@ html, body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('/Public/Assest/images/h1.jpg'); /* ✔ Correct path */
+  width: 100lvw;
+  height: 100lvh;
+  background-image: url('/Public/Assest/images/3.jpg'); /* ✔ Correct path */
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   z-index: -1;
   opacity: 0.99; /* Optional transparency */
 }

@@ -113,7 +113,7 @@ body::after {
 
     #animated-title {
       font-weight: bold;
-      font-size: 3rem;
+      font-size: 2rem;
       color: #00f0ff;
       letter-spacing: 5px;
       font-family: 'Audiowide', cursive;
@@ -125,7 +125,7 @@ body::after {
       margin: 0 auto 2rem;
       max-width: fit-content;
       text-align: center;
-      margin-top: -1rem;
+      margin-top: 1.2rem;
     }
 
     @keyframes typing {
@@ -152,14 +152,18 @@ body::after {
     .card {
   margin: 1rem 0; /* Add vertical spacing */
 }
+
+
 .card {
-   background-color: #1a1a1a;
-  border: none;
+  min-width: 280px; /* or whatever fits your design */
+  flex-shrink: 0;
   border-radius: 20px;
+  background: #1a1a1a;
   padding: 1.2rem;
-  animation: cardGlowPulse 3s ease-in-out infinite;
-  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px #00f0ff66;
+  animation: cardGlowPulse 3s infinite ease-in-out;
 }
+
 .card-title {
       color: #f6feff;
       text-shadow: 0 0 5px #00f0ff88;
@@ -171,6 +175,11 @@ body::after {
     }
 .card:hover {
   transform: scale(1.03);
+}
+.card * {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 

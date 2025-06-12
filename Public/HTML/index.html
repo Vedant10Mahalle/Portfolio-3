@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 
   <title>Vedant Mahalle | Robotics Portfolio</title>
 <!-- <img src="/Public/Assest/images/hhherobg.png" style="border: 2px solid lime;" /> -->
@@ -21,7 +21,7 @@
   />
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
-  <style>
+ <style>
     /* Reset */
 * {
   margin: 0;
@@ -110,6 +110,7 @@ html, body {
   100% { border-right: none; }
 }
 
+
  /* Sidebar - Bottom Nav */
    nav.sidebar {
   position: fixed;
@@ -168,8 +169,7 @@ html, body {
       }
     }
     
-
-   
+    
 .hero-section::before {
   content: "";
   position: absolute;
@@ -184,9 +184,9 @@ html, body {
 .hero-heading {
   font-size: 3.5rem;
   font-family: 'Orbitron', sans-serif;
-  
+  /* background-color: transparent !important; */
   color: #0ff;
-  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  text-shadow: 0 0 1px #0ff, 0 0 20px #0ff;
   animation: typing-hero 3s steps(20, end) forwards, blink-cursor 0.7s step-end infinite;
   overflow: hidden;
   white-space: nowrap;
@@ -276,7 +276,7 @@ html, body {
 .typewriter-tagline {
   background-color: transparent !important;
   color: #0ff;
-  font-size: 1.4rem;
+  font-size: 1rem;
   white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid #0ff;
@@ -284,8 +284,17 @@ html, body {
   animation: typing-tagline 2.5s steps(30, end) forwards, blink-cursor-tagline 0.7s step-end infinite;
   text-shadow: 0 0 5px #0ff;
   letter-spacing: 2px;
+  margin: initial;
   margin-bottom: 1.2rem;
   text-align: center;
+
+
+.top-right {
+  position: absolute;
+  top: 20px;         /* Adjust distance from top */
+  right: 30px;       /* Adjust distance from right */
+  z-index: 10;
+}
 }
 
 .animated-title h1 {
@@ -302,30 +311,51 @@ html, body {
 }
 
 .animated-subtitle {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #00fefb;
   text-shadow: 0 0 10px #00fefb;
   white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid #00fefb;
   width: 0;
-  margin: 0 auto;
+  margin: initial;
   font-family: 'Orbitron', sans-serif;
   animation: typing-subtitle 3s steps(30, end) forwards;
   margin-bottom: 1.5rem;
 }
 
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  z-index: 2;
+  position: relative;
+  margin-top: -40px;
+}
+
+.hero-section {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* 🔵 GLOW BUTTONS SIDE-BY-SIDE */
 .hero-buttons {
   display: flex;
   justify-content: center;
+  /* align-items: center; */
   gap: 1.5rem;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  /* /* z-index: 3; */
   position: relative;
-  z-index: 10;
-}
+} 
 
+/* 🔵 VISIBLE TRANSPARENT GLOW BUTTON */
 .btn-glow {
-  background-color: rgba(0, 0, 0, 0.4); /* Slight bg to show on image */
+  background-color: transparent;
   border: 2px solid #00ffff;
   color: #00ffff;
   text-shadow: 0 0 5px #00ffff;
@@ -333,10 +363,6 @@ html, body {
   padding: 10px 20px;
   border-radius: 10px;
   font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.3s ease;
-  z-index: 11;
 }
 
 .btn-glow:hover {
@@ -346,13 +372,14 @@ html, body {
 }
 
 
+
 /* 🟢 Optional: Background blur behind text to avoid blocking robot visuals */
 .typewriter-tagline,
 .animated-title h1,
 .animated-subtitle {
   background: rgba(0, 0, 0, 0.3);
   padding: 0.2em 1em;
-  border-radius: 10px;
+  border-radius: 1px;
 }
 
 
@@ -442,25 +469,25 @@ html, body {
   50% {
     border-color: transparent;
   }
-}
+} 
 
 @media (max-width: 600px) {
   .typing-text {
     font-size: 1rem;
   }
-}
+} 
 
 
 .background-image {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('/Public/Assest/images/h1.jpg'); /* ✔ Correct path */
+  width: 100lvw;
+  height: 100lvh;
+  background-image: url('/Public/Assest/images/3.jpg'); /* ✔ Correct path */
   background-size: cover;
-  background-position: absolute center;
-  background-repeat: no-repeat;
+  background-position: center;
+  background-repeat: repeat;
   z-index: -1;
   opacity: 0.99; /* Optional transparency */
 }
@@ -479,7 +506,6 @@ html, body {
   text-align: center;
   /* color: white; */
 }
-
 
 .site-logo {
   position: absolute;
@@ -542,25 +568,23 @@ html, body {
 <body>
    <div class="background-image"></div>
   <!-- Main Content -->
-  <div class="main-content">
-  <p class="typewriter-tagline">WELCOME TO MY ROBOTICS WORLD</p>
+   <div class="main-content">
+  <p class="typewriter-tagline top-right">WELCOME TO MY WORLD</p>
 
   <div class="animated-title">
     <h1><span class="typewriter-text">Hi, I'm Vedant </span></h1>
   </div>
 
   <p class="animated-subtitle">Robotics & AI Enthusiast</p>
-   <p class="typing-robot-line" id="typing-text"></p>
+   <!-- <p class="animated-subtitle">Robotics & AI Enthusiast</p> -->
+<p class="typing-robot-line" id="typing-text"></p>
 
-    <!-- <a href="/Public/HTML/project.html">
-      <button class="btn-glow">View Projects</button>
-    </a>
-    <a href="/Public/HTML/about.html">
-      <button class="btn-glow">About Me</button>
-    </a> -->
-  </div>
+    <!-- <a href="/Public/HTML/project.html"><button class="btn-glow">View Projects</button></a> -->
+    <!-- <a href="/Public/HTML/about.html"><button class="btn-glow">About Me</button></a> -->
+  
+    
 
-
+</div>
     </section>
 
     <!-- <footer>
@@ -583,9 +607,8 @@ html, body {
 
   <!-- Glow cursor -->
   <div id="glow-cursor"></div>
-   <!-- Site Logo -->
+ <!-- Site Logo -->
   <div class="site-logo">VSM</div>
-
   <!-- Redirect overlay -->
   <div id="redirect-overlay">
     <div class="redirect-message">🚀 Redirecting you...</div>
@@ -650,7 +673,8 @@ html, body {
       });
     });
 
-     const texts = [
+
+    const texts = [
     "Building ROS...",
     "Developing Web Interfaces for Robots...",
     "Dream. Design. Deploy."
@@ -678,7 +702,6 @@ html, body {
   }
 
   window.onload = typeText;
-
   </script>
 </body>
 </html>
