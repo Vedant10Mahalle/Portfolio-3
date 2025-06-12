@@ -17,11 +17,47 @@
 
   
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  /* Ensure no overflow */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Fix inputs */
+input, textarea {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive container */
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Fix bottom navbar */
+.bottom-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #000; /* or your dark theme */
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+/* Make icons responsive */
+.bottom-navbar img, .bottom-navbar svg, .bottom-navbar i {
+  width: 24px;
+  height: 24px;
+  color: cyan;
+}
+
 
   body {
     font-family: 'Orbitron', sans-serif;
