@@ -22,7 +22,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
-/* 🔁 RESET */
+    /* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -36,49 +36,164 @@ html, body {
   touch-action: manipulation;
 }
 
-/* ✨ TYPING EFFECT HEADINGS */
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.7; }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulseGlow {
-  0%, 100% { filter: drop-shadow(0 0 6px #0ff); }
-  50% { filter: drop-shadow(0 0 16px #00fff7); }
-}
-
-/* 🎯 HERO TEXT */
-.hero-heading,
-.animated-title h1,
-.typing-robot-line,
-.animated-subtitle,
-.typewriter-tagline {
+/* Body & layout */
+.animated-title h1 {
   font-family: 'Orbitron', sans-serif;
+  background-color: transparent !important;
+  font-size: 3rem;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
   white-space: nowrap;
   overflow: hidden;
-  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  border-right: 3px solid #0ff;
+  width: fit-content;
+  margin: 2vh auto 0 auto; /* 🟢 Moved down slightly */
+  animation: typing-title 3s steps(20, end) forwards, blink-title 0.7s step-end infinite;
+  z-index: 2;
+}
+
+@keyframes typing-title {
+  from { width: 0; }
+  to { width: 26ch; } /* Adjust to your text length */
+}
+
+@keyframes blink-title {
+  50% { border-color: transparent; }
+}   
+
+
+
+
+/* Remove cursor after typing ends */
+.animated-title::after {
+  content: "";
+  animation: remove-cursor 3s forwards;
+}
+
+@keyframes remove-cursor {
+  0%   { border-right: 2px solid #00fefb; }
+  100% { border-right: none; }
+}
+     
+.animated-subtitle {
+  font-size: 1.5rem;
+  color: #00fefb;
   background-color: transparent !important;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #00fefb;
+  width: 0;
+  margin: 1vh auto 0 auto; /* 🟢 Closer to title */
+  text-shadow: 0 0 10px #00fefb;
+  animation: typing-subtitle 3s steps(30, end) forwards;
+  font-family: 'Orbitron', sans-serif;
+  z-index: 2;
+}
+
+@keyframes typing-subtitle {
+  from { width: 0; }
+  to { width: 26ch; }
+}
+
+@keyframes blink-cursor {
+  50% { border-color: transparent; }
+}  
+
+/* Remove cursor after typing ends */
+.animated-subtitle::after {
+  content: "";
+  animation: remove-cursor 3s forwards;
+}
+
+@keyframes remove-cursor {
+  0%   { border-right: 2px solid #00fefb; }
+  100% { border-right: none; }
+}
+
+
+
+    /* Sidebar - Bottom Nav */
+    nav.sidebar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      box-shadow:
+        0 -1px 10px #0ff, 
+        0 -2px 20px #0ff;
+      z-index: 1000;
+      backdrop-filter: saturate(180%) blur(8px);
+      border-top: 1px solid #0ff;
+    }
+
+    nav.sidebar a.nav-icon {
+      color: #0ff;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      gap: 1rem;
+      transition: 
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+      text-decoration: none;
+      filter: drop-shadow(0 0 4px #0ff);
+      position: relative;
+    }
+
+    nav.sidebar a.nav-icon:hover,
+    nav.sidebar a.nav-icon.active {
+      color: #0ff;
+      box-shadow:
+        0 0 8px #0ff,
+        0 0 16px #0ff,
+        0 0 24px #00fff7,
+        0 0 30px #00fff7;
+      transform: scale(1.25) rotate(8deg);
+      animation: pulseGlow 2s infinite;
+      z-index: 10;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 6px #0ff);
+      }
+      50% {
+        filter: drop-shadow(0 0 16px #00fff7);
+      }
+    }
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(circle at top center, rgba(0, 255, 255, 0.1), transparent 70%);
+  z-index: -1;
 }
 
 .hero-heading {
   font-size: 3.5rem;
+  font-family: 'Orbitron', sans-serif;
+  
   color: #0ff;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  animation: typing-hero 3s steps(20, end) forwards, blink-cursor 0.7s step-end infinite;
+  overflow: hidden;
+  white-space: nowrap;
   border-right: 3px solid #0ff;
-  animation: typing 3s steps(20, end) forwards, blink 0.7s step-end infinite;
   margin: 0 auto;
 }
 
@@ -89,133 +204,131 @@ html, body {
   animation: fadeInUp 2s ease-in-out;
 }
 
-.animated-title h1 {
-  font-size: 3rem;
-  color: #0ff;
-  border-right: 3px solid #0ff;
-  animation: typing 3s steps(20, end) forwards, blink 0.7s step-end infinite;
-  margin: 2vh auto 0 auto;
+@keyframes typing-hero {
+  from { width: 0; }
+  to { width: 100%; }
 }
 
-.animated-subtitle {
-  font-size: 1.5rem;
-  color: #00fefb;
-  border-right: 2px solid #00fefb;
-  animation: typing 3s steps(30, end) forwards, blink 0.7s step-end infinite;
-  margin: 1vh auto 1.5rem auto;
+@keyframes blink-cursor {
+  50% { border-color: transparent; }
 }
 
-.typewriter-tagline {
-  font-size: 1.8rem;
-  color: #0ff;
-  border-right: 2px solid #0ff;
-  animation: typing 2.5s steps(30, end) forwards, blink 0.7s step-end infinite;
-  margin-top: 18vh;
-  margin-bottom: 1.2rem;
-  text-align: center;
-}
-
-.typing-robot-line {
-  font-size: 1.2rem;
-  color: #00ffff;
-  border-right: 2px solid #00ffff;
-  animation: blink 0.75s step-end infinite;
-  margin: 1rem auto;
-  text-align: center;
-}
-
-/* 📱 RESPONSIVE */
-@media (max-width: 600px) {
-  .typing-text { font-size: 1rem; }
-}
-
-@media (max-width: 768px) {
-  .form-container { padding: 10px; }
-  input, textarea { font-size: 14px; }
-  h1, h2, h3 { font-size: 24px; }
-  .contact-section {
-    background-size: cover;
-    background-position: center;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* 🌌 BACKGROUND IMAGE */
-.background-image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('/Public/Assest/images/3.jpg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  background-attachment: fixed;
-  z-index: -1;
-  opacity: 0.99;
-}
-
-
-/* 🎯 HERO & MAIN CONTAINER */
-.hero-section {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  /* background-image: url('/Public/Assest/images/3.jpg'); */
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: scroll; /* works better on mobile */
-  z-index: -1;
-}
-
-
-.hero-section::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: radial-gradient(circle at top center, rgba(0, 255, 255, 0.1), transparent 70%);
-  z-index: -1;
-}
-
 .main-content, .hero-content {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 8vh; /* 🟢 Push everything down */
+}
+
+/* Typing effect for tagline */
+.typewriter-tagline {
+  font-family: 'Orbitron', sans-serif;
+  background-color: transparent !important;
+  color: #0ff;
+  font-size: 1.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #0ff;
+  width: 0;
+  animation: typing-tagline 2.5s steps(30, end) forwards, blink-cursor-tagline 0.7s step-end infinite;
+  text-shadow: 0 0 5px #0ff;
+  letter-spacing: 2px;
+  margin-top: 18vh; /* 🟢 Moved tagline lower to near robot eye */
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  text-align: center;
   z-index: 2;
+}
+/* Typing animation */
+@keyframes typing-tagline {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-cursor-tagline {
+  0%, 100% { border-color: #0ff; }
+  50% { border-color: transparent; }
+}
+
+/* Add this below your existing CSS or merge properly */
+
+.main-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 2rem;
-  text-align: center;
-  margin-top: -40px;
+  position: relative;
+  z-index: 2;
+  margin-top: -40px; /* 👈 Pull everything slightly UP */
 }
 
-/* 👨‍🎨 LOGO */
-.site-logo {
-  position: absolute;
-  top: 20px;
-  left: 30px;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.8rem;
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+.typewriter-tagline {
+  background-color: transparent !important;
+  color: #0ff;
+  font-size: 1.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #0ff;
+  width: 0;
+  animation: typing-tagline 2.5s steps(30, end) forwards, blink-cursor-tagline 0.7s step-end infinite;
+  text-shadow: 0 0 5px #0ff;
   letter-spacing: 2px;
-  z-index: 100;
+  margin-bottom: 1.2rem;
+  text-align: center;
 }
 
-/* 🔘 GLOW BUTTONS */
+.animated-title h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #0ff;
+  margin: 0 auto;
+  animation: typing-title 3s steps(20, end) forwards, blink-title 0.7s step-end infinite;
+  margin-bottom: 0.5rem;  /* 👈 Move subtitle closer */
+}
+
+.animated-subtitle {
+  font-size: 1.5rem;
+  color: #00fefb;
+  text-shadow: 0 0 10px #00fefb;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #00fefb;
+  width: 0;
+  margin: 0 auto;
+  font-family: 'Orbitron', sans-serif;
+  animation: typing-subtitle 3s steps(30, end) forwards;
+  margin-bottom: 1.5rem;
+}
+
 .hero-buttons {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
+  margin-top: 2.5rem;
+  position: relative;
+  z-index: 10;
 }
 
 .btn-glow {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.4); /* Slight bg to show on image */
   border: 2px solid #00ffff;
   color: #00ffff;
   text-shadow: 0 0 5px #00ffff;
@@ -223,6 +336,10 @@ html, body {
   padding: 10px 20px;
   border-radius: 10px;
   font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 11;
 }
 
 .btn-glow:hover {
@@ -231,107 +348,199 @@ html, body {
   color: #000;
 }
 
-/* 🔮 CURSOR */
-#glow-cursor {
-  position: fixed;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #00f0ff;
-  box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.05s ease-out;
-  will-change: transform;
-}
 
-/* 🔁 REDIRECT OVERLAY */
-#redirect-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background-color: #000;
-  color: #00f0ff;
-  font-family: 'Orbitron', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  z-index: 9999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease-in-out;
-}
-
-#redirect-overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.redirect-message {
-  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
-  animation: pulse 1.5s infinite ease-in-out;
-}
-
-/* 📱 BOTTOM NAVIGATION BAR */
-nav.sidebar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background: #000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  border-top: 1px solid #0ff;
-  box-shadow: 0 -1px 10px #0ff, 0 -2px 20px #0ff;
-  backdrop-filter: saturate(180%) blur(8px);
-  z-index: 1000;
-}
-
-nav.sidebar a.nav-icon {
-  color: #0ff;
-  font-size: 1.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  text-decoration: none;
-  filter: drop-shadow(0 0 4px #0ff);
-  transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-nav.sidebar a.nav-icon:hover,
-nav.sidebar a.nav-icon.active {
-  color: #0ff;
-  transform: scale(1.25) rotate(8deg);
-  animation: pulseGlow 2s infinite;
-  box-shadow: 0 0 8px #0ff, 0 0 16px #0ff, 0 0 24px #00fff7, 0 0 30px #00fff7;
-}
-
-/* 📍 TOP RIGHT ELEMENT */
-.top-right {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  z-index: 10;
-}
-
-/* ✨ BACKGROUND BEHIND TEXT */
+/* 🟢 Optional: Background blur behind text to avoid blocking robot visuals */
 .typewriter-tagline,
 .animated-title h1,
 .animated-subtitle {
   background: rgba(0, 0, 0, 0.3);
   padding: 0.2em 1em;
-  border-radius: 1px;
+  border-radius: 10px;
 }
-</style>
 
+
+    
+
+    /* Glow cursor */
+    #glow-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #00f0ff;
+      box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s ease-out;
+      will-change: transform;
+    }
+
+    /* Redirect overlay */
+    #redirect-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      color: #00f0ff;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    #redirect-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .redirect-message {
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+      }
+    }
+ .typing-text {
+  color: #00ffff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  animation: typing 6s steps(40, end) 1 forwards, blink 0.7s step-end infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #00ffff;
+  max-width: 100vw; /* ensures it fits container */
+  width: 100%;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@media (max-width: 600px) {
+  .typing-text {
+    font-size: 1rem;
+  }
+}
+
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/Public/Assest/images/h1.jpg'); /* ✔ Correct path */
+  background-size: cover;
+  background-position: absolute center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.99; /* Optional transparency */
+}
+
+
+.main-content, .hero-content {
+  position: relative;
+  z-index: 1;
+  
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  /* color: white; */
+}
+
+
+.site-logo {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+  z-index: 100;
+  letter-spacing: 2px;
+}
+
+.typing-robot-line {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffff;
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px #00ffff;
+  margin-top: 1rem;
+  height: 1.8rem;
+  letter-spacing: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #00ffff;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #00ffff; }
+}
+
+
+
+@media (max-width: 768px) {
+  .form-container {
+    padding: 10px;
+  }
+
+  input, textarea {
+    font-size: 14px;
+  }
+
+  h1, h2, h3 {
+    font-size: 24px;
+  }
+
+  .contact-section {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+
+  </style>
 </head>
 <body>
    <div class="background-image"></div>

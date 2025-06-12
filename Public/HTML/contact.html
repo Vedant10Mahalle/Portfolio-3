@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
   <title>Contact | Vedant Mahalle</title>
 
   <link
@@ -295,6 +296,18 @@
   50% { transform: scale(1.1); opacity: 0.7; }
 }
 
+body {
+  padding-bottom: env(safe-area-inset-bottom);
+  margin: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+form, .contact-section, .footer, .bottom-icons {
+  padding: 16px;
+  box-sizing: border-box;
+}
+
 
 </style>
 
@@ -317,13 +330,12 @@
     <h1 class="neon-glow">Get in Touch</h1>
     <p class="description">Let's connect! Feel free to send a message or reach out through social media.</p>
 
-    <form id="contactForm" action="https://usebasin.com/f/aa52441e99f6" method="POST" novalidate>
+    <form id="contactForm" class="form-container" action="https://usebasin.com/f/aa52441e99f6" method="POST" novalidate>
       <input type="hidden" name="_subject" value="New Contact Form Submission" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_next" value="thank-you.html" />
 
-      <form class="form-container" id="contactForm" novalidate>
   <div>
     <label for="name">Your Name</label>
     <input
@@ -439,73 +451,95 @@
 
 
   </main>
-<div id="redirect-overlay">
-    
- <div class="redirect-message">🚀 Redirecting you ....</div>
-  </div>
- 
+
+ <div id="redirect-overlay">
+  <div class="redirect-message">🚀 Redirecting you ....</div>
+</div>
+
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("contactForm");
+   // If you use AOS, make sure its script is loaded before this
+   if (typeof AOS !== "undefined") {
+     AOS.init({ duration: 1000, easing: "ease-in-out", once: true });
+   }
+
+    // Remove or comment out glowCursor code if you don't have an element with id="glow-cursor"
+    // const glowCursor = document.getElementById("glow-cursor");
+    // document.addEventListener("mousemove", (e) => {
+    //   glowCursor.style.top = `${e.clientY}px`;
+    //   glowCursor.style.left = `${e.clientX}px`;
+    // });
+
+    // document.addEventListener("touchmove", (e) => {
+    //   if (e.touches.length > 0) {
+    //     const touch = e.touches[0];
+    //     glowCursor.style.top = `${touch.clientY}px`;
+    //     glowCursor.style.left = `${touch.clientX}px`;
+    //   }
+    // }, { passive: true });
+
+    const sidebarLinks = document.querySelectorAll(".sidebar a");
     const overlay = document.getElementById("redirect-overlay");
 
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
+    const form = document.getElementById("contactForm");
+    if (form) {
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-      let isValid = true;
+        let isValid = true;
 
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const college = document.getElementById("college").value.trim();
-      const message = document.getElementById("message").value.trim();
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const college = document.getElementById("college").value.trim();
+        const message = document.getElementById("message").value.trim();
 
-      const nameError = document.getElementById("nameError");
-      const emailError = document.getElementById("emailError");
-      const collegeError = document.getElementById("collegeError");
-      const messageError = document.getElementById("messageError");
+        const nameError = document.getElementById("nameError");
+        const emailError = document.getElementById("emailError");
+        const collegeError = document.getElementById("collegeError");
+        const messageError = document.getElementById("messageError");
 
-      // Clear previous errors
-      nameError.textContent = "";
-      emailError.textContent = "";
-      collegeError.textContent = "";
-      messageError.textContent = "";
+        // Clear previous errors
+        nameError.textContent = "";
+        emailError.textContent = "";
+        collegeError.textContent = "";
+        messageError.textContent = "";
 
-      // Validate fields
-      if (name === "") {
-        nameError.textContent = "⚠️ Name is required!";
-        isValid = false;
-      }
+        // Validate fields
+        if (name === "") {
+          nameError.textContent = "⚠️ Name is required!";
+          isValid = false;
+        }
 
-      if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
-        emailError.textContent = "⚠️ Please enter a valid email!";
-        isValid = false;
-      }
+        if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+          emailError.textContent = "⚠️ Please enter a valid email!";
+          isValid = false;
+        }
 
-      if (college === "") {
-        collegeError.textContent = "⚠️ College name is required!";
-        isValid = false;
-      }
+        if (college === "") {
+          collegeError.textContent = "⚠️ College name is required!";
+          isValid = false;
+        }
 
-      if (message.length < 10) {
-        messageError.textContent = "⚠️ Message should be at least 10 characters!";
-        isValid = false;
-      }
+        if (message.length < 10) {
+          messageError.textContent = "⚠️ Message should be at least 10 characters!";
+          isValid = false;
+        }
 
-      if (!isValid) {
-        // Focus first error field
-        if (nameError.textContent) document.getElementById("name").focus();
-        else if (emailError.textContent) document.getElementById("email").focus();
-        else if (collegeError.textContent) document.getElementById("college").focus();
-        else if (messageError.textContent) document.getElementById("message").focus();
-        return;
-      }
+        if (!isValid) {
+          // Focus first error field
+          if (nameError.textContent) document.getElementById("name").focus();
+          else if (emailError.textContent) document.getElementById("email").focus();
+          else if (collegeError.textContent) document.getElementById("college").focus();
+          else if (messageError.textContent) document.getElementById("message").focus();
+          return;
+        }
 
-      // ✅ If valid, show overlay and redirect
-      overlay.classList.add("active");
+        // ✅ If valid, show overlay and redirect
+        overlay.classList.add("active");
 
-      setTimeout(() => {
-        window.location.href = "thankyou.html"; // Change this if needed
-      }, 2000); // 2-second delay
-    });
-  });
+        setTimeout(() => {
+          window.location.href = "thankyou.html";
+        }, 2000);
+
+      });
+    }
 </script>
