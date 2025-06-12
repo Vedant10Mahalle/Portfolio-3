@@ -259,44 +259,65 @@ input, textarea {
     filter: drop-shadow(0 0 20px #0ff);
   }
 
-  footer {
-    text-align: center;
-    padding: 1rem 0;
-    color: #0ff;
-    font-weight: 600;
+ /* Ensure footer content stays responsive */
+.custom-footer {
+  padding: 1rem 1.2rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Tagline styling */
+.custom-footer .tagline {
+  color: #0ff;
+  font-weight: 900;
+  font-size: 1.2rem;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+  margin: 0 auto;
+  white-space: normal;
+}
+
+/* Copyright text styling */
+.custom-footer .copyright {
+  color: #aaa;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* Make text scale better on small devices */
+@media (max-width: 480px) {
+  .custom-footer .tagline {
     font-size: 1rem;
-    filter: drop-shadow(0 0 6px #0ff);
-    margin-top: 3rem;
+    letter-spacing: 1px;
   }
+}
 
-  @media (max-width: 768px) {
-    .main-content {
-      padding: 1rem;
-      margin: 2rem 1rem 5rem 1rem;
-    }
 
-    input.form-control,
-    textarea.form-control {
-      font-size: 1rem;
-      padding: 0.7rem 0.8rem;
-    }
-
-    h1.neon-glow {
-      font-size: 1.8rem;
-    }
-
-    .social-links h3 {
-      font-size: 1.2rem;
-    }
-
-    .social-icon {
-      font-size: 2rem;
-    }
-
-    button.btn-primary {
-      font-size: 1rem;
-      padding: 0.8rem;
-    }
+  @media (max-width: 480px) {
+      input.form-control,
+      textarea.form-control {
+        font-size: 1rem;
+        padding: 0.7rem 0.8rem;
+      }
+  
+      h1.neon-glow {
+        font-size: 1.8rem;
+      }
+  
+      .social-links h3 {
+        font-size: 1.2rem;
+      }
+  
+      .social-icon {
+        font-size: 2rem;
+      }
+  
+      button.btn-primary {
+        font-size: 1rem;
+        padding: 0.8rem;
+      }
   }
 
 #redirect-overlay {
@@ -369,7 +390,7 @@ form, .contact-section, .footer, .bottom-icons {
     <form id="contactForm" class="form-container" action="https://usebasin.com/f/aa52441e99f6" method="POST" novalidate>
       <input type="hidden" name="_subject" value="New Contact Form Submission" />
       <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="thankyou.html" />
       <input type="hidden" name="_next" value="thank-you.html" />
 
   <div>
@@ -476,14 +497,15 @@ form, .contact-section, .footer, .bottom-icons {
 
       </div>
     </section>
-<footer class="mt-5 text-center">
-  <p style="color: #0ff; font-weight: 900; font-size: 1.2rem; font-family: 'Orbitron', sans-serif; letter-spacing: 2px;">
+<footer class="custom-footer mt-5 text-center">
+  <p class="tagline">
     Precision.&nbsp;&nbsp;&nbsp;Passion.&nbsp;&nbsp;&nbsp;Progress.
   </p>
-  <p style="color: #aaa; margin-top: 1.5rem;">
+  <p class="copyright">
     © 2025 Vedant Mahalle | Made with ❤️
   </p>
 </footer>
+
 
 
   </main>
