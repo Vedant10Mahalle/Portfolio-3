@@ -259,44 +259,45 @@ input, textarea {
     filter: drop-shadow(0 0 20px #0ff);
   }
 
-  .footer-section {
-  max-width: 100%;
-  padding: 0 16px;
-  text-align: center;
-  box-sizing: border-box;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-/* Optional: Shrink text for small screens */
-@media (max-width: 480px) {
-  .footer-section {
-    font-size: 14px;
-  }
-
-  input.form-control,
-  textarea.form-control {
+  footer {
+    text-align: center;
+    padding: 1rem 0;
+    color: #0ff;
+    font-weight: 600;
     font-size: 1rem;
-    padding: 0.7rem 0.8rem;
+    filter: drop-shadow(0 0 6px #0ff);
+    margin-top: 3rem;
   }
 
-  h1.neon-glow {
-    font-size: 1.8rem;
-  }
+  @media (max-width: 768px) {
+    .main-content {
+      padding: 1rem;
+      margin: 2rem 1rem 5rem 1rem;
+    }
 
-  .social-links h3 {
-    font-size: 1.2rem;
-  }
+    input.form-control,
+    textarea.form-control {
+      font-size: 1rem;
+      padding: 0.7rem 0.8rem;
+    }
 
-  .social-icon {
-    font-size: 2rem;
-  }
+    h1.neon-glow {
+      font-size: 1.8rem;
+    }
 
-  button.btn-primary {
-    font-size: 1rem;
-    padding: 0.8rem;
+    .social-links h3 {
+      font-size: 1.2rem;
+    }
+
+    .social-icon {
+      font-size: 2rem;
+    }
+
+    button.btn-primary {
+      font-size: 1rem;
+      padding: 0.8rem;
+    }
   }
-}
 
 #redirect-overlay {
   position: fixed;
@@ -370,7 +371,7 @@ form, .contact-section, .footer, .bottom-icons {
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_next" value="thank-you.html" />
-      <input type="hidden" name="_next" value="thankyou.html" />
+
   <div>
     <label for="name">Your Name</label>
     <input
@@ -475,7 +476,7 @@ form, .contact-section, .footer, .bottom-icons {
 
       </div>
     </section>
-<footer class="footer-section text-center">
+<footer class="mt-5 text-center">
   <p style="color: #0ff; font-weight: 900; font-size: 1.2rem; font-family: 'Orbitron', sans-serif; letter-spacing: 2px;">
     Precision.&nbsp;&nbsp;&nbsp;Passion.&nbsp;&nbsp;&nbsp;Progress.
   </p>
