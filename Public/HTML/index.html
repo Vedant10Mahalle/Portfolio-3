@@ -22,7 +22,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
  <style>
-    /* Reset */
+   /* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -36,475 +36,24 @@ html, body {
   touch-action: manipulation;
 }
 
-/* Body & layout */
-.animated-title h1 {
-  font-family: 'Orbitron', sans-serif;
-  background-color: transparent !important;
-  font-size: 3rem;
-  color: #0ff;
-  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid #0ff;
-  width: fit-content;
-  margin: 2vh auto 0 auto; /* 🟢 Moved down slightly */
-  animation: typing-title 3s steps(20, end) forwards, blink-title 0.7s step-end infinite;
-  z-index: 2;
-}
-
-@keyframes typing-title {
-  from { width: 0; }
-  to { width: 26ch; } /* Adjust to your text length */
-}
-
-@keyframes blink-title {
-  50% { border-color: transparent; }
-}   
-
-
-
-
-/* Remove cursor after typing ends */
-.animated-title::after {
-  content: "";
-  animation: remove-cursor 3s forwards;
-}
-
-@keyframes remove-cursor {
-  0%   { border-right: 2px solid #00fefb; }
-  100% { border-right: none; }
-}
-     
-.animated-subtitle {
-  font-size: 1.5rem;
-  color: #00fefb;
-  background-color: transparent !important;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #00fefb;
-  width: 0;
-  margin: 1vh auto 0 auto; /* 🟢 Closer to title */
-  text-shadow: 0 0 10px #00fefb;
-  animation: typing-subtitle 3s steps(30, end) forwards;
-  font-family: 'Orbitron', sans-serif;
-  z-index: 2;
-}
-
-@keyframes typing-subtitle {
-  from { width: 0; }
-  to { width: 26ch; }
-}
-
-@keyframes blink-cursor {
-  50% { border-color: transparent; }
-}  
-
-/* Remove cursor after typing ends */
-.animated-subtitle::after {
-  content: "";
-  animation: remove-cursor 3s forwards;
-}
-
-@keyframes remove-cursor {
-  0%   { border-right: 2px solid #00fefb; }
-  100% { border-right: none; }
-}
-
-
- /* Sidebar - Bottom Nav */
-   nav.sidebar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px; /* slightly more height */
-  background: #000;
-  display: flex;
-  justify-content: space-evenly; /* CHANGED */
-  align-items: center;
-  box-shadow:
-    0 -1px 10px #0ff, 
-    0 -2px 20px #0ff;
-  z-index: 1000;
-  backdrop-filter: saturate(180%) blur(8px);
-  border-top: 1px solid #0ff;
-}
-
-
-    nav.sidebar a.nav-icon {
-  color: #0ff;
-  font-size: 1.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1; /* NEW: ensures equal spacing for all icons */
-  height: 48px;
-  text-decoration: none;
-  filter: drop-shadow(0 0 4px #0ff);
-  transition: 
-    color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
-}
-
- nav.sidebar a.nav-icon:hover,
-    nav.sidebar a.nav-icon.active {
-      color: #0ff;
-      box-shadow:
-        0 0 8px #0ff,
-        0 0 16px #0ff,
-        0 0 24px #00fff7,
-        0 0 30px #00fff7;
-      transform: scale(1.25) rotate(8deg);
-      animation: pulseGlow 2s infinite;
-      z-index: 10;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% {
-        filter: drop-shadow(0 0 6px #0ff);
-      }
-      50% {
-        filter: drop-shadow(0 0 16px #00fff7);
-      }
-    }
-    
-    
-.hero-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: radial-gradient(circle at top center, rgba(0, 255, 255, 0.1), transparent 70%);
-  z-index: -1;
-}
-
-.hero-heading {
-  font-size: 3.5rem;
-  font-family: 'Orbitron', sans-serif;
-  /* background-color: transparent !important; */
-  color: #0ff;
-  text-shadow: 0 0 1px #0ff, 0 0 20px #0ff;
-  animation: typing-hero 3s steps(20, end) forwards, blink-cursor 0.7s step-end infinite;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 3px solid #0ff;
-  margin: 0 auto;
-}
-
-.hero-subheading {
-  font-size: 1.5rem;
-  color: #aaa;
-  margin-top: 1rem;
-  animation: fadeInUp 2s ease-in-out;
-}
-
-@keyframes typing-hero {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink-cursor {
-  50% { border-color: transparent; }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.main-content, .hero-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  min-height: 100vh;
-  padding-top: 8vh; /* 🟢 Push everything down */
-}
-
-/* Typing effect for tagline */
-.typewriter-tagline {
-  font-family: 'Orbitron', sans-serif;
-  background-color: transparent !important;
-  color: #0ff;
-  font-size: 1.4rem;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #0ff;
-  width: 0;
-  animation: typing-tagline 2.5s steps(30, end) forwards, blink-cursor-tagline 0.7s step-end infinite;
-  text-shadow: 0 0 5px #0ff;
-  letter-spacing: 2px;
-  margin-top: 18vh; /* 🟢 Moved tagline lower to near robot eye */
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  text-align: center;
-  z-index: 2;
-}
-/* Typing animation */
-@keyframes typing-tagline {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink-cursor-tagline {
-  0%, 100% { border-color: #0ff; }
-  50% { border-color: transparent; }
-}
-
-/* Add this below your existing CSS or merge properly */
-
-.main-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  position: relative;
-  z-index: 2;
-  margin-top: -40px; /* 👈 Pull everything slightly UP */
-}
-
-.typewriter-tagline {
-  background-color: transparent !important;
-  color: #0ff;
-  font-size: 1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #0ff;
-  width: 0;
-  animation: typing-tagline 2.5s steps(30, end) forwards, blink-cursor-tagline 0.7s step-end infinite;
-  text-shadow: 0 0 5px #0ff;
-  letter-spacing: 2px;
-  margin: initial;
-  margin-bottom: 1.2rem;
-  text-align: center;
-
-
-.top-right {
-  position: absolute;
-  top: 20px;         /* Adjust distance from top */
-  right: 30px;       /* Adjust distance from right */
-  z-index: 10;
-}
-}
-
-.animated-title h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 3rem;
-  color: #0ff;
-  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid #0ff;
-  margin: 0 auto;
-  animation: typing-title 3s steps(20, end) forwards, blink-title 0.7s step-end infinite;
-  margin-bottom: 0.5rem;  /* 👈 Move subtitle closer */
-}
-
-.animated-subtitle {
-  font-size: 1.4rem;
-  color: #00fefb;
-  text-shadow: 0 0 10px #00fefb;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #00fefb;
-  width: 0;
-  margin: initial;
-  font-family: 'Orbitron', sans-serif;
-  animation: typing-subtitle 3s steps(30, end) forwards;
-  margin-bottom: 1.5rem;
-}
-
-.main-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  z-index: 2;
-  position: relative;
-  margin-top: -40px;
-}
-
-.hero-section {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* Full viewport height */
-  background-image: url('/Public/Assest/images/your-hero-bg.jpg');
-  background-size: cover;       /* Ensures full coverage */
-  background-position: center;  /* Centers image on all devices */
-  background-repeat: no-repeat;
-  background-attachment: scroll; /* Avoids unwanted fixed cropping on mobile */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Ensure content inside hero is responsive */
-.hero-section .main-content,
-.hero-section .hero-content {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 2rem 0;
-}
-
-/* Mobile tweak: adjust the section height if needed */
-@media (max-width: 768px) {
-  .hero-section {
-    background-position: top center; /* Focus on top-middle of image */
-    height: auto;
-    min-height: 70vh; /* Slightly shorter when content squeezes */
-    padding: 4rem 1rem;
-  }
-}
-
-
-
-/* 🟢 Optional: Background blur behind text to avoid blocking robot visuals */
-.typewriter-tagline,
-.animated-title h1,
-.animated-subtitle {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.2em 1em;
-  border-radius: 1px;
-}
-
-
-    
-
-    /* Glow cursor */
-    #glow-cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      background: #00f0ff;
-      box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.05s ease-out;
-      will-change: transform;
-    }
-
-    /* Redirect overlay */
-    #redirect-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: #000;
-      color: #00f0ff;
-      font-family: 'Orbitron', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      z-index: 9999;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease-in-out;
-    }
-
-    #redirect-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .redirect-message {
-      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
-      animation: pulse 1.5s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-      0%,
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.1);
-        opacity: 0.7;
-      }
-    }
- .typing-text {
-  color: #00ffff;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.2rem;
-  margin-top: 10px;
-  animation: typing 6s steps(40, end) 1 forwards, blink 0.7s step-end infinite;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #00ffff;
-  max-width: 100vw; /* ensures it fits container */
-  width: 100%;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-} 
-
-@media (max-width: 600px) {
-  .typing-text {
-    font-size: 1rem;
-  }
-} 
-
-
-.background-image {
+/* ===== GLOW CURSOR ===== */
+#glow-cursor {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100lvw;
-  height: 100lvh;
-  background-image: url('/Public/Assest/images/hhherobg.png'); /* ✔ Correct path */
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat;
-  z-index: -1;
-  opacity: 0.99; /* Optional transparency */
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #00f0ff;
+  box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease-out;
+  will-change: transform;
 }
 
-
-.main-content, .hero-content {
-  position: relative;
-  z-index: 1;
-  
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  text-align: center;
-  /* color: white; */
-}
-
+/* ===== SITE LOGO ===== */
 .site-logo {
   position: absolute;
   top: 20px;
@@ -517,47 +66,233 @@ html, body {
   letter-spacing: 2px;
 }
 
+/* ===== HERO SECTION ===== */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url('/Public/Assest/images/1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(circle at top center, rgba(0, 255, 255, 0.1), transparent 70%);
+  z-index: -1;
+}
+
+/* ===== HERO CONTENT ===== */
+.hero-content {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  border-right: 3px solid #0ff;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing-hero 3s steps(20, end) forwards, blink-cursor 0.7s step-end infinite;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  color: #aaa;
+  margin-top: 1rem;
+  animation: fadeInUp 2s ease-in-out;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  z-index: 2;
+  padding: 2rem;
+  position: relative;
+}
+
+/* ===== TYPING EFFECTS ===== */
+.animated-title h1,
+.animated-subtitle,
+.typewriter-tagline {
+  font-family: 'Orbitron', sans-serif;
+  color: #0ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-shadow: 0 0 10px #0ff;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.2em 1em;
+  border-radius: 1px;
+}
+
+.animated-title h1 {
+  font-size: 3rem;
+  border-right: 3px solid #0ff;
+  margin-bottom: 0.5rem;
+  animation: typing-title 3s steps(20, end) forwards, blink-title 0.7s step-end infinite;
+}
+
+.animated-subtitle {
+  font-size: 1.4rem;
+  color: #00fefb;
+  border-right: 2px solid #00fefb;
+  animation: typing-subtitle 3s steps(30, end) forwards;
+  margin-bottom: 1.5rem;
+}
+
+.typewriter-tagline {
+  font-size: 1.2rem;
+  border-right: 2px solid #0ff;
+  animation: typing-tagline 2.5s steps(30, end) forwards, blink-cursor-tagline 0.7s step-end infinite;
+  letter-spacing: 2px;
+  margin-top: 18vh;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .typing-robot-line {
   font-family: 'Orbitron', sans-serif;
   color: #00ffff;
   font-size: 1.2rem;
   text-shadow: 0 0 5px #00ffff;
   margin-top: 1rem;
-  height: 1.8rem;
-  letter-spacing: 1px;
-  overflow: hidden;
-  white-space: nowrap;
   border-right: 2px solid #00ffff;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+  white-space: nowrap;
+  overflow: hidden;
   animation: blink-caret 0.75s step-end infinite;
 }
 
+/* ===== SIDEBAR NAV ===== */
+nav.sidebar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: #000;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 -1px 10px #0ff, 0 -2px 20px #0ff;
+  border-top: 1px solid #0ff;
+  z-index: 1000;
+  backdrop-filter: saturate(180%) blur(8px);
+}
+
+nav.sidebar a.nav-icon {
+  color: #0ff;
+  font-size: 1.8rem;
+  text-decoration: none;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  filter: drop-shadow(0 0 4px #0ff);
+  transition: color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+nav.sidebar a.nav-icon:hover,
+nav.sidebar a.nav-icon.active {
+  box-shadow: 0 0 8px #0ff, 0 0 16px #0ff, 0 0 24px #00fff7;
+  transform: scale(1.25) rotate(8deg);
+  animation: pulseGlow 2s infinite;
+  z-index: 10;
+}
+
+/* ===== REDIRECT OVERLAY ===== */
+#redirect-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  color: #00f0ff;
+  font-family: 'Orbitron', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.99rem;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#redirect-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.redirect-message {
+  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes typing-title { from { width: 0; } to { width: 26ch; } }
+@keyframes typing-subtitle { from { width: 0; } to { width: 26ch; } }
+@keyframes typing-tagline { from { width: 0; } to { width: 100%; } }
+@keyframes typing-hero { from { width: 0; } to { width: 100%; } }
+
+@keyframes blink-title {
+  50% { border-color: transparent; }
+}
+@keyframes blink-cursor {
+  50% { border-color: transparent; }
+}
+@keyframes blink-cursor-tagline {
+  50% { border-color: transparent; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { filter: drop-shadow(0 0 6px #0ff); }
+  50% { filter: drop-shadow(0 0 16px #00fff7); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+}
+
 @keyframes blink-caret {
-  from, to { border-color: transparent }
+  0%, 100% { border-color: transparent; }
   50% { border-color: #00ffff; }
 }
 
-
-
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .form-container {
-    padding: 10px;
-  }
-
-  input, textarea {
-    font-size: 14px;
-  }
-
-  h1, h2, h3 {
-    font-size: 24px;
-  }
-
-  .contact-section {
-    background-size: cover;
-    background-position: center;
-  }
+  .hero-content h1 { font-size: 2rem; }
+  .hero-content p { font-size: 1.2rem; }
+  .typing-text { font-size: 1rem; }
+  .form-container { padding: 10px; }
+  input, textarea { font-size: 14px; }
+  h1, h2, h3 { font-size: 24px; }
 }
 
 
@@ -566,29 +301,23 @@ html, body {
 <body>
    <div class="background-image"></div>
   <!-- Main Content -->
-   <div class="main-content">
-  <p class="typewriter-tagline top-right">WELCOME TO MY WORLD</p>
-
-  <div class="animated-title">
-    <h1><span class="typewriter-text">Hi, I'm Vedant </span></h1>
-  </div>
-
-  <p class="animated-subtitle">Robotics & AI Enthusiast</p>
-   <!-- <p class="animated-subtitle">Robotics & AI Enthusiast</p> -->
-<p class="typing-robot-line" id="typing-text"></p>
-
-    <!-- <a href="/Public/HTML/project.html"><button class="btn-glow">View Projects</button></a> -->
-    <!-- <a href="/Public/HTML/about.html"><button class="btn-glow">About Me</button></a> -->
   
-    
+  
 
-</div>
-    </section>
-
-    <!-- <footer>
-      <p>© 2025 Vedant Mahalle | Made with ❤️</p>
-    </footer> -->
+<section class="hero-section">
+  <div class="hero-content">
+    <p class="typewriter-tagline top-right">WELCOME TO MY WORLD</p>
+    <div class="animated-title">
+      <h1><span class="typewriter-text">Hi, I'm Vedant </span></h1>
+    </div>
+    <p class="animated-subtitle">Robotics & AI Enthusiast</p>
+    <p class="typing-robot-line" id="typing-text"></p>
   </div>
+</section>
+
+  <!-- <footer>
+    <p>© 2025 Vedant Mahalle | Made with ❤️</p>
+  </footer> -->
 
   <!-- Sidebar Navigation (at bottom) -->
   <nav class="sidebar">
@@ -609,7 +338,7 @@ html, body {
   <div class="site-logo">VSM</div>
   <!-- Redirect overlay -->
   <div id="redirect-overlay">
-    <div class="redirect-message">🚀 Redirecting you...</div>
+    <div class="redirect-message">🚀 Redirecting you..</div>
   </div>
 
   <!-- Bootstrap JS Bundle -->

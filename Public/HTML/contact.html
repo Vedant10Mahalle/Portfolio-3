@@ -327,40 +327,7 @@ input, textarea {
     }
   }
 
-#redirect-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #000;
-  color: #00f0ff;
-  font-family: 'Orbitron', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  z-index: 9999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease-in-out;
-}
-
-#redirect-overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.redirect-message {
-  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
-  animation: pulse 1.5s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.7; }
-}
-
-body {
+ body {
   padding-bottom: env(safe-area-inset-bottom);
   margin: 0;
   overflow-x: hidden;
@@ -371,6 +338,32 @@ form, .contact-section, .footer, .bottom-icons {
   padding: 16px;
   box-sizing: border-box;
 }
+
+ .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+.overlay-content {
+  background: #000;
+  padding: 20px 40px;
+  border-radius: 12px;
+  color: #0ff;
+  font-size: 18px;
+  box-shadow: 0 0 20px #0ff;
+}
+
+
 
 
 </style>
@@ -502,6 +495,17 @@ form, .contact-section, .footer, .bottom-icons {
   <i class="fab fa-discord"></i>
 </a>
 
+<a
+  href="mailto:vedantmahalle1004@example.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="social-icon"
+  aria-label="Email"
+>
+  <i class="fas fa-envelope"></i>
+</a>
+
+
       </div>
     </section>
 <footer class="custom-footer mt-5 text-center">
@@ -517,9 +521,12 @@ form, .contact-section, .footer, .bottom-icons {
 
   </main>
 
- <div id="redirect-overlay">
-  <div class="redirect-message">🚀 Redirecting you ....</div>
+ <div id="redirect-overlay" class="">
+  <div class="overlay-content">
+    <p>🚀 Redirecting you ..</p>
+  </div>
 </div>
+
 
 <script>
    // If you use AOS, make sure its script is loaded before this
