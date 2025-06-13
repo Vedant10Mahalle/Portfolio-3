@@ -72,35 +72,13 @@ input, textarea {
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    padding-bottom: env(safe-area-inset-bottom);
+    margin: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
 
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  nav.sidebar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    background: #000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    box-shadow: 0 -1px 10px #0ff, 0 -2px 20px #0ff;
-    z-index: 1000;
-    backdrop-filter: saturate(180%) blur(8px);
-    border-top: 1px solid #0ff;
-  }
-
-   /* Sidebar - Bottom Nav */
+  /* Removed body::after overlay that caused screen blur */
    nav.sidebar {
   position: fixed;
   bottom: 0;
@@ -197,9 +175,10 @@ input, textarea {
   }
 
   label {
-    font-weight: 600;
+    font-weight: 900;
+    font-size: 1.3rem;
     color: #0ff;
-    margin-bottom: 0.3rem;
+    margin-bottom: 1rem;
   }
 
   input.form-control,
@@ -340,12 +319,7 @@ form, .contact-section, .footer, .bottom-icons {
 }
 
  .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 255, 255, 0.1);
+/* Removed duplicate body rule */
   backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
@@ -363,6 +337,29 @@ form, .contact-section, .footer, .bottom-icons {
   box-shadow: 0 0 20px #0ff;
 }
 
+#redirect-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#redirect-overlay .overlay-content {
+  background: rgba(188, 161, 232, 0.315);
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50px); /* 👈 Moves the popup up */
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  font-size: 1.1rem;
+}
 
 
 
@@ -486,7 +483,7 @@ form, .contact-section, .footer, .bottom-icons {
           ><i class="fab fa-instagram"></i
         ></a>
         <a
-  href="https://discord.com/users/vedantmahalle."
+  href="https://discord.com/users/vedantmahalle"
   target="_blank"
   rel="noopener noreferrer"
   class="social-icon"
@@ -496,7 +493,7 @@ form, .contact-section, .footer, .bottom-icons {
 </a>
 
 <a
-  href="mailto:vedantmahalle1004@example.com"
+  href="mailto:vedantmahalle1004@gmail.com"
   target="_blank"
   rel="noopener noreferrer"
   class="social-icon"
@@ -521,7 +518,7 @@ form, .contact-section, .footer, .bottom-icons {
 
   </main>
 
- <div id="redirect-overlay" class="">
+ <div id="redirect-overlay" class="overlay" style="display:none;">
   <div class="overlay-content">
     <p>🚀 Redirecting you ..</p>
   </div>
@@ -529,89 +526,87 @@ form, .contact-section, .footer, .bottom-icons {
 
 
 <script>
-   // If you use AOS, make sure its script is loaded before this
-   if (typeof AOS !== "undefined") {
-     AOS.init({ duration: 1000, easing: "ease-in-out", once: true });
-   }
+  if (typeof AOS !== "undefined") {
+    AOS.init({ duration: 1000, easing: "ease-in-out", once: true });
+  }
 
-    // Remove or comment out glowCursor code if you don't have an element with id="glow-cursor"
-    // const glowCursor = document.getElementById("glow-cursor");
-    // document.addEventListener("mousemove", (e) => {
-    //   glowCursor.style.top = `${e.clientY}px`;
-    //   glowCursor.style.left = `${e.clientX}px`;
-    // });
+  const overlay = document.getElementById("redirect-overlay");
+  const form = document.getElementById("contactForm");
 
-    // document.addEventListener("touchmove", (e) => {
-    //   if (e.touches.length > 0) {
-    //     const touch = e.touches[0];
-    //     glowCursor.style.top = `${touch.clientY}px`;
-    //     glowCursor.style.left = `${touch.clientX}px`;
-    //   }
-    // }, { passive: true });
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent default always at the start
 
-    const sidebarLinks = document.querySelectorAll(".sidebar a");
-    const overlay = document.getElementById("redirect-overlay");
+      let isValid = true;
 
-    const form = document.getElementById("contactForm");
-    if (form) {
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const college = document.getElementById("college").value.trim();
+      const message = document.getElementById("message").value.trim();
 
-        let isValid = true;
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const collegeError = document.getElementById("collegeError");
+      const messageError = document.getElementById("messageError");
 
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const college = document.getElementById("college").value.trim();
-        const message = document.getElementById("message").value.trim();
+      nameError.textContent = "";
+      emailError.textContent = "";
+      collegeError.textContent = "";
+      messageError.textContent = "";
 
-        const nameError = document.getElementById("nameError");
-        const emailError = document.getElementById("emailError");
-        const collegeError = document.getElementById("collegeError");
-        const messageError = document.getElementById("messageError");
+      if (name === "") {
+        nameError.textContent = "⚠️ Name is required!";
+        isValid = false;
+      }
 
-        // Clear previous errors
-        nameError.textContent = "";
-        emailError.textContent = "";
-        collegeError.textContent = "";
-        messageError.textContent = "";
+      if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+        emailError.textContent = "⚠️ Please enter a valid email!";
+        isValid = false;
+      }
 
-        // Validate fields
-        if (name === "") {
-          nameError.textContent = "⚠️ Name is required!";
-          isValid = false;
-        }
+      if (college === "") {
+        collegeError.textContent = "⚠️ College name is required!";
+        isValid = false;
+      }
 
-        if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
-          emailError.textContent = "⚠️ Please enter a valid email!";
-          isValid = false;
-        }
+      if (message.length < 10) {
+        messageError.textContent = "⚠️ Message should be at least 10 characters!";
+        isValid = false;
+      }
 
-        if (college === "") {
-          collegeError.textContent = "⚠️ College name is required!";
-          isValid = false;
-        }
+      if (!isValid) {
+        // Focus first error field
+        if (nameError.textContent) document.getElementById("name").focus();
+        else if (emailError.textContent) document.getElementById("email").focus();
+        else if (collegeError.textContent) document.getElementById("college").focus();
+        else if (messageError.textContent) document.getElementById("message").focus();
+        return;
+      }
 
-        if (message.length < 10) {
-          messageError.textContent = "⚠️ Message should be at least 10 characters!";
-          isValid = false;
-        }
+      // Show overlay with custom thank you
+      overlay.style.display = "flex";
+      overlay.querySelector(".overlay-content").innerHTML = `<p>✅ Thank you, <strong>${name}</strong>, for contacting me!</p>`;
 
-        if (!isValid) {
-          // Focus first error field
-          if (nameError.textContent) document.getElementById("name").focus();
-          else if (emailError.textContent) document.getElementById("email").focus();
-          else if (collegeError.textContent) document.getElementById("college").focus();
-          else if (messageError.textContent) document.getElementById("message").focus();
-          return;
-        }
+      const formData = new FormData(form);
 
-        // ✅ If valid, show overlay and redirect
-        overlay.classList.add("active");
-
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+      })
+      .then(response => {
+        form.reset();
         setTimeout(() => {
-          window.location.href = "thankyou.html";
-        }, 2000);
-
+          overlay.style.display = "none";
+          overlay.querySelector(".overlay-content").innerHTML = "<p>🚀 Redirecting you ..</p>";
+        }, 3000);
+      })
+      .catch(error => {
+        overlay.querySelector(".overlay-content").innerHTML = "<p>❌ Something went wrong. Please try again!</p>";
+        setTimeout(() => {
+          overlay.style.display = "none";
+          overlay.querySelector(".overlay-content").innerHTML = "<p>🚀 Redirecting you ..</p>";
+        }, 3000);
       });
-    }
+    });
+  }
 </script>
