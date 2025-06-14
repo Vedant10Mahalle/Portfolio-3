@@ -15,10 +15,12 @@ Welcome to my personal portfolio website! This project showcases my work, skills
 - **HTML5** – Markup structure
 - **CSS3** – Styling, responsiveness, animations
 - **JavaScript** – Interactivity, form handling
+- **Bootstrap**
+- **AOS Animations**
 
 ## 📷 Screenshots
 
-_Add your screenshots here if any, like homepage, project section, or contact page._
+
 
 ## 🛠️ Installation & Usage
 

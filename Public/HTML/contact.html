@@ -543,11 +543,11 @@ form, .contact-section, .footer, .bottom-icons {
   </p>
 </footer>
 
-<div id="contactPageViewsDisplay" class="view-counter">
-  <i class="fas fa-eye"></i>
-  <span id="contactPageViewsCount">0</span> people viewed this page
+<div id="PortfolioTotalViewsDisplay" class="view-counter">
+  <i class="fas fa-eye" aria-hidden="true"></i>
+  <span id="PortfolioTotalViewsCount">0</span>
+  <span>people viewed this portfolio</span>
 </div>
-
 
   </main>
 
@@ -647,17 +647,19 @@ form, .contact-section, .footer, .bottom-icons {
 
   
 
-   document.addEventListener("DOMContentLoaded", function () {
-    const viewKey = "contactPageViews";
+  document.addEventListener("DOMContentLoaded", function () {
+    // Track total portfolio views across all pages
+    const viewKey = "portfolioTotalViews";
     let viewCount = localStorage.getItem(viewKey);
 
-    // Only count once per session
-    if (!sessionStorage.getItem("contactPageViewed")) {
+    // Only count once per session (per browser tab)
+    if (!sessionStorage.getItem("portfolioViewed")) {
       viewCount = parseInt(viewCount || "0") + 1;
       localStorage.setItem(viewKey, viewCount);
-      sessionStorage.setItem("contactPageViewed", "true");
+      sessionStorage.setItem("portfolioViewed", "true");
     }
 
+    // Show the count in the element with id 'contactPageViewsCount'
     const countElement = document.getElementById("contactPageViewsCount");
     if (countElement) {
       countElement.textContent = localStorage.getItem(viewKey);
